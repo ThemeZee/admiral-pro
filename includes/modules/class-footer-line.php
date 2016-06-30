@@ -5,16 +5,16 @@
  * Displays credit link and footer text based on theme options
  * Registers and displays footer navigation
  *
- * @package Gambit Pro
+ * @package Admiral Pro
  */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Use class to avoid namespace collisions
-if ( ! class_exists( 'Gambit_Pro_Footer_Line' ) ) :
+if ( ! class_exists( 'Admiral_Pro_Footer_Line' ) ) :
 
-class Gambit_Pro_Footer_Line {
+class Admiral_Pro_Footer_Line {
 
 	/**
 	 * Footer Line Setup
@@ -23,20 +23,20 @@ class Gambit_Pro_Footer_Line {
 	*/
 	static function setup() {
 		
-		// Return early if Gambit Theme is not active
-		if ( ! current_theme_supports( 'gambit-pro'  ) ) {
+		// Return early if Admiral Theme is not active
+		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
 			return;
 		}
 		
 		// Display footer navigation
-		add_action( 'gambit_before_footer', array( __CLASS__, 'display_footer_navigation' ), 20 );
+		add_action( 'admiral_before_footer', array( __CLASS__, 'display_footer_navigation' ), 20 );
 		
 		// Remove default footer text function and replace it with new one
-		remove_action( 'gambit_footer_text', 'gambit_footer_text' );
-		add_action( 'gambit_footer_text', array( __CLASS__, 'display_footer_text' ) );
+		remove_action( 'admiral_footer_text', 'admiral_footer_text' );
+		add_action( 'admiral_footer_text', array( __CLASS__, 'display_footer_text' ) );
 		
 		// Display social icons in footer
-		add_action( 'gambit_footer_menu', array( __CLASS__, 'display_footer_social_menu' ) );
+		add_action( 'admiral_footer_menu', array( __CLASS__, 'display_footer_social_menu' ) );
 		
 		// Add Footer Settings in Customizer
 		add_action( 'customize_register', array( __CLASS__, 'footer_settings' ) );
@@ -84,7 +84,7 @@ class Gambit_Pro_Footer_Line {
 	static function display_footer_text() { 
 
 		// Get Theme Options from Database
-		$theme_options = Gambit_Pro_Customizer::get_theme_options();
+		$theme_options = Admiral_Pro_Customizer::get_theme_options();
 		
 		// Display Footer Text
 		if ( $theme_options['footer_text'] <> '' ) :
@@ -96,9 +96,9 @@ class Gambit_Pro_Footer_Line {
 		// Call Credit Link function of theme if credit link is activated
 		if ( true == $theme_options['credit_link'] ) :
 		
-			if ( function_exists( 'gambit_footer_text' ) ) :
+			if ( function_exists( 'admiral_footer_text' ) ) :
 			
-				gambit_footer_text();
+				admiral_footer_text();
 				
 			endif;
 			
@@ -145,42 +145,42 @@ class Gambit_Pro_Footer_Line {
 	static function footer_settings( $wp_customize ) {
 
 		// Add Sections for Footer Settings
-		$wp_customize->add_section( 'gambit_pro_section_footer', array(
-			'title'    => __( 'Footer Settings', 'gambit-pro' ),
+		$wp_customize->add_section( 'admiral_pro_section_footer', array(
+			'title'    => __( 'Footer Settings', 'admiral-pro' ),
 			'priority' => 90,
-			'panel' => 'gambit_options_panel' 
+			'panel' => 'admiral_options_panel' 
 			)
 		);
 		
 		// Add Footer Text setting
-		$wp_customize->add_setting( 'gambit_theme_options[footer_text]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[footer_text]', array(
 			'default'           => '',
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_footer_text' )
 			)
 		);
-		$wp_customize->add_control( 'gambit_theme_options[footer_text]', array(
-			'label'    => __( 'Footer Text', 'gambit-pro' ),
-			'section'  => 'gambit_pro_section_footer',
-			'settings' => 'gambit_theme_options[footer_text]',
+		$wp_customize->add_control( 'admiral_theme_options[footer_text]', array(
+			'label'    => __( 'Footer Text', 'admiral-pro' ),
+			'section'  => 'admiral_pro_section_footer',
+			'settings' => 'admiral_theme_options[footer_text]',
 			'type'     => 'textarea',
 			'priority' => 1
 			)
 		);
 		
 		// Add Credit Link setting
-		$wp_customize->add_setting( 'gambit_theme_options[credit_link]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[credit_link]', array(
 			'default'           => true,
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
-			'sanitize_callback' => 'gambit_sanitize_checkbox'
+			'sanitize_callback' => 'admiral_sanitize_checkbox'
 			)
 		);
-		$wp_customize->add_control( 'gambit_theme_options[credit_link]', array(
-			'label'    => __( 'Display Credit Link to ThemeZee on footer line', 'gambit-pro' ),
-			'section'  => 'gambit_pro_section_footer',
-			'settings' => 'gambit_theme_options[credit_link]',
+		$wp_customize->add_control( 'admiral_theme_options[credit_link]', array(
+			'label'    => __( 'Display Credit Link to ThemeZee on footer line', 'admiral-pro' ),
+			'section'  => 'admiral_pro_section_footer',
+			'settings' => 'admiral_theme_options[credit_link]',
 			'type'     => 'checkbox',
 			'priority' => 2
 			)
@@ -210,14 +210,14 @@ class Gambit_Pro_Footer_Line {
 	*/
 	static function register_footer_menu() {
 	
-		// Return early if Gambit Theme is not active
-		if ( ! current_theme_supports( 'gambit-pro'  ) ) {
+		// Return early if Admiral Theme is not active
+		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
 			return;
 		}
 		
 		register_nav_menus( array(
-			'footer' => esc_html__( 'Footer Navigation', 'gambit-pro' ),
-			'footer-social' => esc_html__( 'Footer Social Icons', 'gambit-pro' ),
+			'footer' => esc_html__( 'Footer Navigation', 'admiral-pro' ),
+			'footer-social' => esc_html__( 'Footer Social Icons', 'admiral-pro' ),
 		) );
 		
 	}
@@ -225,9 +225,9 @@ class Gambit_Pro_Footer_Line {
 }
 
 // Run Class
-add_action( 'init', array( 'Gambit_Pro_Footer_Line', 'setup' ) );
+add_action( 'init', array( 'Admiral_Pro_Footer_Line', 'setup' ) );
 
 // Register footer navigation in backend
-add_action( 'after_setup_theme', array( 'Gambit_Pro_Footer_Line', 'register_footer_menu' ), 30 );
+add_action( 'after_setup_theme', array( 'Admiral_Pro_Footer_Line', 'register_footer_menu' ), 30 );
 
 endif;

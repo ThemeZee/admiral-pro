@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @version 1.6
  */
-class Gambit_Pro_Plugin_Updater {
+class Admiral_Pro_Plugin_Updater {
     private $api_url   = '';
     private $api_data  = array();
     private $name      = '';
@@ -174,14 +174,14 @@ class Gambit_Pro_Plugin_Updater {
 
             if ( empty( $version_info->download_link ) ) {
                 printf(
-                    __( 'There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a>.', 'gambit-pro' ),
+                    __( 'There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a>.', 'admiral-pro' ),
                     esc_html( $version_info->name ),
                     esc_url( $changelog_link ),
                     esc_html( $version_info->new_version )
                 );
             } else {
                 printf(
-                    __( 'There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a> or <a href="%4$s">update now</a>.', 'gambit-pro' ),
+                    __( 'There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a> or <a href="%4$s">update now</a>.', 'admiral-pro' ),
                     esc_html( $version_info->name ),
                     esc_url( $changelog_link ),
                     esc_html( $version_info->new_version ),
@@ -321,7 +321,7 @@ class Gambit_Pro_Plugin_Updater {
         }
 
         if( ! current_user_can( 'update_plugins' ) ) {
-            wp_die( esc_html__( 'You do not have permission to install plugin updates', 'gambit-pro' ), esc_html__( 'Error', 'gambit-pro' ), array( 'response' => 403 ) );
+            wp_die( esc_html__( 'You do not have permission to install plugin updates', 'admiral-pro' ), esc_html__( 'Error', 'admiral-pro' ), array( 'response' => 403 ) );
         }
 
         $response = $this->api_request( 'plugin_latest_version', array( 'slug' => $_REQUEST['slug'] ) );

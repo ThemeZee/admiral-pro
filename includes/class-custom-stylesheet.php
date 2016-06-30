@@ -4,7 +4,7 @@
  *
  * Creates a custom stylesheet including the custom color, custom fonts and header spacing CSS code
  *
- * @package Gambit Pro
+ * @package Admiral Pro
  */
 
 // Exit if accessed directly
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 // Use class to avoid namespace collisions
-if ( ! class_exists( 'Gambit_Pro_Custom_Stylesheet' ) ) :
+if ( ! class_exists( 'Admiral_Pro_Custom_Stylesheet' ) ) :
 
-class Gambit_Pro_Custom_Stylesheet {
+class Admiral_Pro_Custom_Stylesheet {
 
 	/**
 	 * Footer Widgets Setup
@@ -23,8 +23,8 @@ class Gambit_Pro_Custom_Stylesheet {
 	*/
 	static function setup() {
 		
-		// Return early if Gambit Theme is not active
-		if ( ! current_theme_supports( 'gambit-pro'  ) ) {
+		// Return early if Admiral Theme is not active
+		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
 			return;
 		}
 		
@@ -50,7 +50,7 @@ class Gambit_Pro_Custom_Stylesheet {
 			return;
 		}
 
-		wp_enqueue_style( 'gambit-pro-custom-stylesheet', add_query_arg( 'gambit_pro_custom_css', 1, home_url( '/' ) ) );
+		wp_enqueue_style( 'admiral-pro-custom-stylesheet', add_query_arg( 'admiral_pro_custom_css', 1, home_url( '/' ) ) );
 		
 	}
 	
@@ -61,7 +61,7 @@ class Gambit_Pro_Custom_Stylesheet {
 	static function print_custom_css() {
 		
 		// Only print CSS if this is a stylesheet request
-		if( ! isset( $_GET['gambit_pro_custom_css'] ) || intval( $_GET['gambit_pro_custom_css'] ) !== 1 ) {
+		if( ! isset( $_GET['admiral_pro_custom_css'] ) || intval( $_GET['admiral_pro_custom_css'] ) !== 1 ) {
 			return;
 		}
 
@@ -106,13 +106,13 @@ class Gambit_Pro_Custom_Stylesheet {
 	static function get_custom_css() {
 		
 		// Allow other modules to add CSS code per filter
-		return apply_filters( 'gambit_pro_custom_css_stylesheet', '' );
+		return apply_filters( 'admiral_pro_custom_css_stylesheet', '' );
 		
 	}
 
 }
 
 // Run Class
-add_action( 'init', array( 'Gambit_Pro_Custom_Stylesheet', 'setup' ) );
+add_action( 'init', array( 'Admiral_Pro_Custom_Stylesheet', 'setup' ) );
 
 endif;

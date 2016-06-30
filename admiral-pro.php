@@ -1,17 +1,17 @@
 <?php
 /*
-Plugin Name: Gambit Pro
-Plugin URI: http://themezee.com/addons/gambit-pro/
-Description: Adds additional features like custom colors, google fonts, widget areas and footer copyright to the Gambit theme.
+Plugin Name: Admiral Pro
+Plugin URI: http://themezee.com/addons/admiral-pro/
+Description: Adds additional features like custom colors, google fonts, widget areas and footer copyright to the Admiral theme.
 Author: ThemeZee
 Author URI: https://themezee.com/
 Version: 1.0
-Text Domain: gambit-pro
+Text Domain: admiral-pro
 Domain Path: /languages/
 License: GPL v3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Gambit Pro
+Admiral Pro
 Copyright(C) 2016, ThemeZee.com - support@themezee.com
 
 */
@@ -20,22 +20,22 @@ Copyright(C) 2016, ThemeZee.com - support@themezee.com
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Use class to avoid namespace collisions
-if ( ! class_exists( 'Gambit_Pro' ) ) :
+if ( ! class_exists( 'Admiral_Pro' ) ) :
 
 
 /**
- * Main Gambit_Pro Class
+ * Main Admiral_Pro Class
  *
- * @package Gambit Pro
+ * @package Admiral Pro
  */
-class Gambit_Pro {
+class Admiral_Pro {
 
 	/**
 	 * Call all Functions to setup the Plugin
 	 *
-	 * @uses Gambit_Pro::constants() Setup the constants needed
-	 * @uses Gambit_Pro::includes() Include the required files
-	 * @uses Gambit_Pro::setup_actions() Setup the hooks and actions
+	 * @uses Admiral_Pro::constants() Setup the constants needed
+	 * @uses Admiral_Pro::includes() Include the required files
+	 * @uses Admiral_Pro::setup_actions() Setup the hooks and actions
 	 * @return void
 	 */
 	static function setup() {
@@ -62,7 +62,7 @@ class Gambit_Pro {
 	static function constants() {
 		
 		// Define Plugin Name
-		define( 'GAMBIT_PRO_NAME', 'Gambit Pro' );
+		define( 'GAMBIT_PRO_NAME', 'Admiral Pro' );
 
 		// Define Version Number
 		define( 'GAMBIT_PRO_VERSION', '1.0' );
@@ -91,7 +91,7 @@ class Gambit_Pro {
 	 */
 	static function translation() {
 
-		load_plugin_textdomain( 'gambit-pro', false, dirname( plugin_basename( GAMBIT_PRO_PLUGIN_FILE ) ) . '/languages/' );
+		load_plugin_textdomain( 'admiral-pro', false, dirname( plugin_basename( GAMBIT_PRO_PLUGIN_FILE ) ) . '/languages/' );
 		
 	}
 	
@@ -159,13 +159,13 @@ class Gambit_Pro {
 	 */
 	static function enqueue_styles() {
 
-		// Return early if Gambit Theme is not active
-		if ( ! current_theme_supports( 'gambit-pro'  ) ) {
+		// Return early if Admiral Theme is not active
+		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
 			return;
 		}
 		
 		// Enqueue Plugin Stylesheet
-		wp_enqueue_style( 'gambit-pro', GAMBIT_PRO_PLUGIN_URL . 'assets/css/gambit-pro.css', array(), GAMBIT_PRO_VERSION );
+		wp_enqueue_style( 'admiral-pro', GAMBIT_PRO_PLUGIN_URL . 'assets/css/admiral-pro.css', array(), GAMBIT_PRO_VERSION );
 		
 	}
 	
@@ -176,14 +176,14 @@ class Gambit_Pro {
 	 */
 	static function register_widgets() {
 		
-		// Return early if Gambit Theme is not active
-		if ( ! current_theme_supports( 'gambit-pro'  ) ) {
+		// Return early if Admiral Theme is not active
+		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
 			return;
 		}
 		
-		register_widget( 'Gambit_Pro_Magazine_Posts_Boxed_Widget' );
-		register_widget( 'Gambit_Pro_Magazine_Posts_List_Widget' );
-		register_widget( 'Gambit_Pro_Magazine_Posts_Single_Widget' );
+		register_widget( 'Admiral_Pro_Magazine_Posts_Boxed_Widget' );
+		register_widget( 'Admiral_Pro_Magazine_Posts_List_Widget' );
+		register_widget( 'Admiral_Pro_Magazine_Posts_Single_Widget' );
 		
 	}
 	
@@ -194,7 +194,7 @@ class Gambit_Pro {
 	 */
 	static function plugin_action_links( $actions ) {
 
-		$settings_link = array( 'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'themes.php?page=gambit-pro' ), __( 'Settings', 'gambit-pro' ) ) );
+		$settings_link = array( 'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'themes.php?page=admiral-pro' ), __( 'Settings', 'admiral-pro' ) ) );
 		
 		return array_merge( $settings_link, $actions );
 	}
@@ -210,14 +210,14 @@ class Gambit_Pro {
 			return;
 		endif;
 		
-		$options = Gambit_Pro_Settings::instance();
+		$options = Admiral_Pro_Settings::instance();
 
 		if( $options->get( 'license_key' ) <> '' ) :
 			
 			$license_key = $options->get( 'license_key' );
 			
 			// setup the updater
-			$gambit_pro_updater = new Gambit_Pro_Plugin_Updater( GAMBIT_PRO_STORE_API_URL, __FILE__, array(
+			$admiral_pro_updater = new Admiral_Pro_Plugin_Updater( GAMBIT_PRO_STORE_API_URL, __FILE__, array(
 					'version' 	=> GAMBIT_PRO_VERSION,
 					'license' 	=> $license_key,
 					'item_name' => GAMBIT_PRO_NAME,
@@ -233,6 +233,6 @@ class Gambit_Pro {
 }
 
 // Run Plugin
-Gambit_Pro::setup();
+Admiral_Pro::setup();
 
 endif;

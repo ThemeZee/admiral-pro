@@ -1,10 +1,10 @@
 <?php
 /***
- * Gambit Pro Admin Notices
+ * Admiral Pro Admin Notices
  *
  * Adds admin notices to the WordPress Dashboard
  *
- * @package Gambit Pro
+ * @package Admiral Pro
  */
  
 // Exit if accessed directly
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 // Use class to avoid namespace collisions
-if ( ! class_exists( 'Gambit_Pro_Admin_Notices' ) ) :
+if ( ! class_exists( 'Admiral_Pro_Admin_Notices' ) ) :
 
-class Gambit_Pro_Admin_Notices {
+class Admiral_Pro_Admin_Notices {
 
 	/**
 	 * Setup the Settings Page class
@@ -46,17 +46,17 @@ class Gambit_Pro_Admin_Notices {
 		global $pagenow;
 		
 		// Get Settings
-		$options = Gambit_Pro_Settings::instance();
+		$options = Admiral_Pro_Settings::instance();
 			
-		if( '' == $options->get( 'license_key' ) && in_array( $pagenow, array( 'index.php', 'update-core.php', 'plugins.php', 'themes.php' ) ) && ! isset( $_GET['page'] ) && current_theme_supports( 'gambit-pro' ) && ! get_transient( 'gambit_pro_activate_license_dismissed' ) && current_user_can( 'edit_theme_options' ) ) : ?>
+		if( '' == $options->get( 'license_key' ) && in_array( $pagenow, array( 'index.php', 'update-core.php', 'plugins.php', 'themes.php' ) ) && ! isset( $_GET['page'] ) && current_theme_supports( 'admiral-pro' ) && ! get_transient( 'admiral_pro_activate_license_dismissed' ) && current_user_can( 'edit_theme_options' ) ) : ?>
 			
 			<div class="notice notice-info">
 				<p>
-					<?php printf( __( 'Please enter your license key for the %1$s add-on in order to receive updates and support. <a href="%2$s">Enter License Key</a>', 'gambit-pro' ),
+					<?php printf( __( 'Please enter your license key for the %1$s add-on in order to receive updates and support. <a href="%2$s">Enter License Key</a>', 'admiral-pro' ),
 						GAMBIT_PRO_NAME,
-						admin_url( 'themes.php?page=gambit-pro' ) ); 
+						admin_url( 'themes.php?page=admiral-pro' ) ); 
 					?>
-					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'gambit_pro_action' => 'dismiss_notices', 'gambit_pro_notice' => 'activate_license' ) ), 'gambit_pro_dismiss_notice', 'gambit_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'gambit-pro' ); ?></a>
+					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'admiral_pro_action' => 'dismiss_notices', 'admiral_pro_notice' => 'activate_license' ) ), 'admiral_pro_dismiss_notice', 'admiral_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'admiral-pro' ); ?></a>
 				</p>
 			</div>
 		
@@ -74,17 +74,17 @@ class Gambit_Pro_Admin_Notices {
 		global $pagenow;
 		
 		// Get Settings
-		$options = Gambit_Pro_Settings::instance();
+		$options = Admiral_Pro_Settings::instance();
 			
-		if( 'expired' == $options->get( 'license_status' ) && in_array( $pagenow, array( 'index.php', 'update-core.php', 'plugins.php', 'themes.php' ) ) && ! isset( $_GET['page'] ) && current_theme_supports( 'gambit-pro' ) && ! get_transient( 'gambit_pro_expired_license_dismissed' ) && current_user_can( 'edit_theme_options' ) ) : ?>
+		if( 'expired' == $options->get( 'license_status' ) && in_array( $pagenow, array( 'index.php', 'update-core.php', 'plugins.php', 'themes.php' ) ) && ! isset( $_GET['page'] ) && current_theme_supports( 'admiral-pro' ) && ! get_transient( 'admiral_pro_expired_license_dismissed' ) && current_user_can( 'edit_theme_options' ) ) : ?>
 			
 			<div class="notice notice-warning">
 				<p>
-					<?php printf( __( 'Your license for %1$s has expired. Please <a href="%2$s">renew</a> to continue getting updates and support!', 'gambit-pro' ),
+					<?php printf( __( 'Your license for %1$s has expired. Please <a href="%2$s">renew</a> to continue getting updates and support!', 'admiral-pro' ),
 						GAMBIT_PRO_NAME,
-						admin_url( 'themes.php?page=gambit-pro' ) ); 
+						admin_url( 'themes.php?page=admiral-pro' ) ); 
 					?>
-					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'gambit_pro_action' => 'dismiss_notices', 'gambit_pro_notice' => 'expired_license' ) ), 'gambit_pro_dismiss_notice', 'gambit_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'gambit-pro' ); ?></a>
+					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'admiral_pro_action' => 'dismiss_notices', 'admiral_pro_notice' => 'expired_license' ) ), 'admiral_pro_dismiss_notice', 'admiral_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'admiral-pro' ); ?></a>
 				</p>
 			</div>
 		
@@ -101,15 +101,15 @@ class Gambit_Pro_Admin_Notices {
 	static function missing_theme() { 
 		global $pagenow;
 		
-		if( ! current_theme_supports( 'gambit-pro' ) && in_array( $pagenow, array( 'index.php', 'update-core.php', 'plugins.php', 'themes.php' ) ) && ! isset( $_GET['page'] ) && ! get_transient( 'gambit_pro_missing_theme_dismissed' ) && current_user_can( 'edit_theme_options' ) ) : ?>
+		if( ! current_theme_supports( 'admiral-pro' ) && in_array( $pagenow, array( 'index.php', 'update-core.php', 'plugins.php', 'themes.php' ) ) && ! isset( $_GET['page'] ) && ! get_transient( 'admiral_pro_missing_theme_dismissed' ) && current_user_can( 'edit_theme_options' ) ) : ?>
 			
 			<div class="notice notice-warning">
 				<p>
-					<?php printf( __( 'The %1$s add-on needs the %2$s theme activated in order to work. You should deactivate %1$s if you have switched to another theme permanently.', 'gambit-pro' ),
+					<?php printf( __( 'The %1$s add-on needs the %2$s theme activated in order to work. You should deactivate %1$s if you have switched to another theme permanently.', 'admiral-pro' ),
 						GAMBIT_PRO_NAME,
-						'Gambit'
+						'Admiral'
 					); ?>
-					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'gambit_pro_action' => 'dismiss_notices', 'gambit_pro_notice' => 'missing_theme' ) ), 'gambit_pro_dismiss_notice', 'gambit_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'gambit-pro' ); ?></a>
+					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'admiral_pro_action' => 'dismiss_notices', 'admiral_pro_notice' => 'missing_theme' ) ), 'admiral_pro_dismiss_notice', 'admiral_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'admiral-pro' ); ?></a>
 				</p>
 	
 			</div>
@@ -126,18 +126,18 @@ class Gambit_Pro_Admin_Notices {
 	 */
 	static function dismiss_notices() {
 		
-		// Return early if gambit_pro_action was not fired
-		if ( ! isset( $_REQUEST['gambit_pro_action'] ) ) {
+		// Return early if admiral_pro_action was not fired
+		if ( ! isset( $_REQUEST['admiral_pro_action'] ) ) {
 			return;
 		}
 		
-		if( ! isset( $_GET['gambit_pro_dismiss_notice_nonce'] ) || ! wp_verify_nonce( $_GET['gambit_pro_dismiss_notice_nonce'], 'gambit_pro_dismiss_notice') ) {
-			wp_die( __( 'Security check failed', 'gambit-pro' ), __( 'Error', 'gambit-pro' ), array( 'response' => 403 ) );
+		if( ! isset( $_GET['admiral_pro_dismiss_notice_nonce'] ) || ! wp_verify_nonce( $_GET['admiral_pro_dismiss_notice_nonce'], 'admiral_pro_dismiss_notice') ) {
+			wp_die( __( 'Security check failed', 'admiral-pro' ), __( 'Error', 'admiral-pro' ), array( 'response' => 403 ) );
 		}
 
-		if( isset( $_GET['gambit_pro_notice'] ) ) {
-			set_transient( 'gambit_pro_' . $_GET['gambit_pro_notice'] . '_dismissed', 1, DAY_IN_SECONDS * 60 );
-			wp_redirect( remove_query_arg( array( 'gambit_pro_action', 'gambit_pro_notice', 'gambit_pro_dismiss_notice_nonce' ) ) );
+		if( isset( $_GET['admiral_pro_notice'] ) ) {
+			set_transient( 'admiral_pro_' . $_GET['admiral_pro_notice'] . '_dismissed', 1, DAY_IN_SECONDS * 60 );
+			wp_redirect( remove_query_arg( array( 'admiral_pro_action', 'admiral_pro_notice', 'admiral_pro_dismiss_notice_nonce' ) ) );
 			exit;
 		}
 	
@@ -145,7 +145,7 @@ class Gambit_Pro_Admin_Notices {
 	
 }
 
-// Run Gambit Pro Admin Notices Class
-Gambit_Pro_Admin_Notices::setup();
+// Run Admiral Pro Admin Notices Class
+Admiral_Pro_Admin_Notices::setup();
 
 endif;

@@ -4,7 +4,7 @@
  *
  * Setup the Customizer and theme options for the Pro plugin
  *
- * @package Gambit Pro
+ * @package Admiral Pro
  */
 
 // Exit if accessed directly
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 // Use class to avoid namespace collisions
-if ( ! class_exists( 'Gambit_Pro_Customizer' ) ) :
+if ( ! class_exists( 'Admiral_Pro_Customizer' ) ) :
 
-class Gambit_Pro_Customizer {
+class Admiral_Pro_Customizer {
 
 	/**
 	 * Customizer Setup
@@ -23,8 +23,8 @@ class Gambit_Pro_Customizer {
 	*/
 	static function setup() {
 		
-		// Return early if Gambit Theme is not active
-		if ( ! current_theme_supports( 'gambit-pro'  ) ) {
+		// Return early if Admiral Theme is not active
+		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
 			return;
 		}
 		
@@ -33,7 +33,7 @@ class Gambit_Pro_Customizer {
 		add_action( 'customize_controls_print_styles', array( __CLASS__, 'customize_preview_css' ) );
 		
 		// Remove Upgrade section
-		remove_action( 'customize_register', 'gambit_customize_register_upgrade_settings' );
+		remove_action( 'customize_register', 'admiral_customize_register_upgrade_settings' );
 	}
 	
 	/**
@@ -47,7 +47,7 @@ class Gambit_Pro_Customizer {
 		$theme_options = wp_parse_args( 
 			
 			// Get saved theme options from WP database
-			get_option( 'gambit_theme_options', array() ), 
+			get_option( 'admiral_theme_options', array() ), 
 			
 			// Merge with Default Options if setting was not saved yet
 			self::get_default_options() 
@@ -95,7 +95,7 @@ class Gambit_Pro_Customizer {
 	 */
 	static function customize_preview_js() {
 		
-		wp_enqueue_script( 'gambit-pro-customizer-js', GAMBIT_PRO_PLUGIN_URL . 'assets/js/customizer.js', array( 'customize-preview' ), GAMBIT_PRO_VERSION, true );
+		wp_enqueue_script( 'admiral-pro-customizer-js', GAMBIT_PRO_PLUGIN_URL . 'assets/js/customizer.js', array( 'customize-preview' ), GAMBIT_PRO_VERSION, true );
 	
 	}
 
@@ -106,13 +106,13 @@ class Gambit_Pro_Customizer {
 	 */
 	static function customize_preview_css() {
 		
-		wp_enqueue_style( 'gambit-pro-customizer-css', GAMBIT_PRO_PLUGIN_URL . 'assets/css/customizer.css', array(), GAMBIT_PRO_VERSION );
+		wp_enqueue_style( 'admiral-pro-customizer-css', GAMBIT_PRO_PLUGIN_URL . 'assets/css/customizer.css', array(), GAMBIT_PRO_VERSION );
 	
 	}
 
 }
 
 // Run Class
-add_action( 'init', array( 'Gambit_Pro_Customizer', 'setup' ) );
+add_action( 'init', array( 'Admiral_Pro_Customizer', 'setup' ) );
 
 endif;

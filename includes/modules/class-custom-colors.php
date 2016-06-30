@@ -4,7 +4,7 @@
  *
  * Adds color settings to Customizer and generates color CSS code
  *
- * @package Gambit Pro
+ * @package Admiral Pro
  */
 
 // Exit if accessed directly
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 // Use class to avoid namespace collisions
-if ( ! class_exists( 'Gambit_Pro_Custom_Colors' ) ) :
+if ( ! class_exists( 'Admiral_Pro_Custom_Colors' ) ) :
 
-class Gambit_Pro_Custom_Colors {
+class Admiral_Pro_Custom_Colors {
 
 	/**
 	 * Custom Colors Setup
@@ -23,13 +23,13 @@ class Gambit_Pro_Custom_Colors {
 	*/
 	static function setup() {
 		
-		// Return early if Gambit Theme is not active
-		if ( ! current_theme_supports( 'gambit-pro'  ) ) {
+		// Return early if Admiral Theme is not active
+		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
 			return;
 		}
 		
 		// Add Custom Color CSS code to custom stylesheet output
-		add_filter( 'gambit_pro_custom_css_stylesheet', array( __CLASS__, 'custom_colors_css' ) ); 
+		add_filter( 'admiral_pro_custom_css_stylesheet', array( __CLASS__, 'custom_colors_css' ) ); 
 		
 		// Add Custom Color Settings
 		add_action( 'customize_register', array( __CLASS__, 'color_settings' ) );
@@ -43,10 +43,10 @@ class Gambit_Pro_Custom_Colors {
 	static function custom_colors_css( $custom_css ) { 
 		
 		// Get Theme Options from Database
-		$theme_options = Gambit_Pro_Customizer::get_theme_options();
+		$theme_options = Admiral_Pro_Customizer::get_theme_options();
 		
 		// Get Default Fonts from settings
-		$default_options = Gambit_Pro_Customizer::get_default_options();
+		$default_options = Admiral_Pro_Customizer::get_default_options();
 
 		// Set Color CSS Variable
 		$color_css = '';
@@ -277,18 +277,18 @@ class Gambit_Pro_Custom_Colors {
 	static function color_settings( $wp_customize ) {
 
 		// Add Section for Theme Colors
-		$wp_customize->add_section( 'gambit_pro_section_colors', array(
-			'title'    => __( 'Theme Colors', 'gambit-pro' ),
+		$wp_customize->add_section( 'admiral_pro_section_colors', array(
+			'title'    => __( 'Theme Colors', 'admiral-pro' ),
 			'priority' => 60,
-			'panel' => 'gambit_options_panel' 
+			'panel' => 'admiral_options_panel' 
 			)
 		);
 		
 		// Get Default Colors from settings
-		$default_options = Gambit_Pro_Customizer::get_default_options();
+		$default_options = Admiral_Pro_Customizer::get_default_options();
 		
 		// Add Navigation Primary Color setting
-		$wp_customize->add_setting( 'gambit_theme_options[navi_primary_color]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[navi_primary_color]', array(
 			'default'           => $default_options['navi_primary_color'],
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
@@ -296,16 +296,16 @@ class Gambit_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'gambit_theme_options[navi_primary_color]', array(
-				'label'      => _x( 'Navigation (primary)', 'color setting', 'gambit-pro' ),
-				'section'    => 'gambit_pro_section_colors',
-				'settings'   => 'gambit_theme_options[navi_primary_color]',
+			$wp_customize, 'admiral_theme_options[navi_primary_color]', array(
+				'label'      => _x( 'Navigation (primary)', 'color setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_colors',
+				'settings'   => 'admiral_theme_options[navi_primary_color]',
 				'priority' => 1
 			) ) 
 		);
 		
 		// Add Navigation Secondary Color setting
-		$wp_customize->add_setting( 'gambit_theme_options[navi_secondary_color]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[navi_secondary_color]', array(
 			'default'           => $default_options['navi_secondary_color'],
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
@@ -313,16 +313,16 @@ class Gambit_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'gambit_theme_options[navi_secondary_color]', array(
-				'label'      => _x( 'Navigation (secondary)', 'color setting', 'gambit-pro' ),
-				'section'    => 'gambit_pro_section_colors',
-				'settings'   => 'gambit_theme_options[navi_secondary_color]',
+			$wp_customize, 'admiral_theme_options[navi_secondary_color]', array(
+				'label'      => _x( 'Navigation (secondary)', 'color setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_colors',
+				'settings'   => 'admiral_theme_options[navi_secondary_color]',
 				'priority' => 2
 			) ) 
 		);
 		
 		// Add Post Primary Color setting
-		$wp_customize->add_setting( 'gambit_theme_options[content_primary_color]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[content_primary_color]', array(
 			'default'           => $default_options['content_primary_color'],
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
@@ -330,16 +330,16 @@ class Gambit_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'gambit_theme_options[content_primary_color]', array(
-				'label'      => _x( 'Content (primary)', 'color setting', 'gambit-pro' ),
-				'section'    => 'gambit_pro_section_colors',
-				'settings'   => 'gambit_theme_options[content_primary_color]',
+			$wp_customize, 'admiral_theme_options[content_primary_color]', array(
+				'label'      => _x( 'Content (primary)', 'color setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_colors',
+				'settings'   => 'admiral_theme_options[content_primary_color]',
 				'priority' => 3
 			) ) 
 		);
 		
 		// Add Link and Button Color setting
-		$wp_customize->add_setting( 'gambit_theme_options[content_secondary_color]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[content_secondary_color]', array(
 			'default'           => $default_options['content_secondary_color'],
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
@@ -347,16 +347,16 @@ class Gambit_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'gambit_theme_options[content_secondary_color]', array(
-				'label'      => _x( 'Content (secondary)', 'color setting', 'gambit-pro' ),
-				'section'    => 'gambit_pro_section_colors',
-				'settings'   => 'gambit_theme_options[content_secondary_color]',
+			$wp_customize, 'admiral_theme_options[content_secondary_color]', array(
+				'label'      => _x( 'Content (secondary)', 'color setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_colors',
+				'settings'   => 'admiral_theme_options[content_secondary_color]',
 				'priority' => 4
 			) ) 
 		);
 		
 		// Add Footer Widgets Color setting
-		$wp_customize->add_setting( 'gambit_theme_options[footer_color]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[footer_color]', array(
 			'default'           => $default_options['footer_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
@@ -364,10 +364,10 @@ class Gambit_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'gambit_theme_options[footer_color]', array(
-				'label'      => _x( 'Footer', 'color setting', 'gambit-pro' ),
-				'section'    => 'gambit_pro_section_colors',
-				'settings'   => 'gambit_theme_options[footer_color]',
+			$wp_customize, 'admiral_theme_options[footer_color]', array(
+				'label'      => _x( 'Footer', 'color setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_colors',
+				'settings'   => 'admiral_theme_options[footer_color]',
 				'priority' => 5
 			) ) 
 		);
@@ -377,6 +377,6 @@ class Gambit_Pro_Custom_Colors {
 }
 
 // Run Class
-add_action( 'init', array( 'Gambit_Pro_Custom_Colors', 'setup' ) );
+add_action( 'init', array( 'Admiral_Pro_Custom_Colors', 'setup' ) );
 
 endif;

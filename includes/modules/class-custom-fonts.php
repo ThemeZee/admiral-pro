@@ -4,7 +4,7 @@
  *
  * Adds custom font settings to Customizer and generates font CSS code
  *
- * @package Gambit Pro
+ * @package Admiral Pro
  */
 
 // Exit if accessed directly
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 // Use class to avoid namespace collisions
-if ( ! class_exists( 'Gambit_Pro_Custom_Fonts' ) ) :
+if ( ! class_exists( 'Admiral_Pro_Custom_Fonts' ) ) :
 
-class Gambit_Pro_Custom_Fonts {
+class Admiral_Pro_Custom_Fonts {
 
 	/**
 	 * Custom Fonts Setup
@@ -23,8 +23,8 @@ class Gambit_Pro_Custom_Fonts {
 	*/
 	static function setup() {
 		
-		// Return early if Gambit Theme is not active
-		if ( ! current_theme_supports( 'gambit-pro'  ) ) {
+		// Return early if Admiral Theme is not active
+		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
 			return;
 		}
 		
@@ -34,10 +34,10 @@ class Gambit_Pro_Custom_Fonts {
 		require_once GAMBIT_PRO_PLUGIN_DIR . '/includes/customizer/class-customize-font-list-control.php';
 		
 		// Add Custom Color CSS code to custom stylesheet output
-		add_filter( 'gambit_pro_custom_css_stylesheet', array( __CLASS__, 'custom_fonts_css' ) ); 
+		add_filter( 'admiral_pro_custom_css_stylesheet', array( __CLASS__, 'custom_fonts_css' ) ); 
 		
 		// Load custom fonts from Google web font API
-		add_filter( 'gambit_google_fonts_url', array( __CLASS__, 'google_fonts_url' ) );
+		add_filter( 'admiral_google_fonts_url', array( __CLASS__, 'google_fonts_url' ) );
 		
 		// Add Font Settings in Customizer
 		add_action( 'customize_register', array( __CLASS__, 'font_settings' ) );
@@ -52,10 +52,10 @@ class Gambit_Pro_Custom_Fonts {
 	static function custom_fonts_css( $custom_css ) {
 		
 		// Get Theme Options from Database
-		$theme_options = Gambit_Pro_Customizer::get_theme_options();
+		$theme_options = Admiral_Pro_Customizer::get_theme_options();
 		
 		// Get Default Fonts from settings
-		$default_options = Gambit_Pro_Customizer::get_default_options();
+		$default_options = Admiral_Pro_Customizer::get_default_options();
 		
 		// Set Font CSS Variable
 		$font_css = '';
@@ -127,16 +127,16 @@ class Gambit_Pro_Custom_Fonts {
 	/**
 	 * Replace default Google Fonts URL with custom Fonts from theme settings
 	 *
-	 * @uses gambit_google_fonts_url filter hook
+	 * @uses admiral_google_fonts_url filter hook
 	 * @return string Google Font URL
 	 */
 	static function google_fonts_url( $google_fonts_url ) { 
 
 		// Get Theme Options from Database
-		$theme_options = Gambit_Pro_Customizer::get_theme_options();
+		$theme_options = Admiral_Pro_Customizer::get_theme_options();
 		
 		// Default Fonts which haven't to be load from Google
-		$default_fonts = Gambit_Pro_Custom_Font_Lists::default_browser_fonts();
+		$default_fonts = Admiral_Pro_Custom_Font_Lists::default_browser_fonts();
 		
 		// Set Google Font Array
 		$google_font_families = array();
@@ -199,99 +199,99 @@ class Gambit_Pro_Custom_Fonts {
 	static function font_settings( $wp_customize ) {
 
 		// Add Section for Theme Fonts
-		$wp_customize->add_section( 'gambit_pro_section_fonts', array(
-			'title'    => __( 'Theme Fonts', 'gambit-pro' ),
+		$wp_customize->add_section( 'admiral_pro_section_fonts', array(
+			'title'    => __( 'Theme Fonts', 'admiral-pro' ),
 			'priority' => 70,
-			'panel' => 'gambit_options_panel' 
+			'panel' => 'admiral_options_panel' 
 			)
 		);
 		
 		// Get Default Fonts from settings
-		$default_options = Gambit_Pro_Customizer::get_default_options();
+		$default_options = Admiral_Pro_Customizer::get_default_options();
 
 		// Add settings and controls for theme fonts
-		$wp_customize->add_setting( 'gambit_theme_options[text_font]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[text_font]', array(
 			'default'           => $default_options['text_font'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'esc_attr'
 			)
 		);
-		$wp_customize->add_control( new Gambit_Pro_Customize_Font_Control( 
+		$wp_customize->add_control( new Admiral_Pro_Customize_Font_Control( 
 			$wp_customize, 'text_font', array(
-				'label'      => __( 'Base Font', 'gambit-pro' ),
-				'section'    => 'gambit_pro_section_fonts',
-				'settings'   => 'gambit_theme_options[text_font]',
+				'label'      => __( 'Base Font', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_fonts',
+				'settings'   => 'admiral_theme_options[text_font]',
 				'priority' => 1
 			) ) 
 		);
 		
-		$wp_customize->add_setting( 'gambit_theme_options[title_font]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[title_font]', array(
 			'default'           => $default_options['title_font'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'esc_attr'
 			)
 		);
-		$wp_customize->add_control( new Gambit_Pro_Customize_Font_Control( 
+		$wp_customize->add_control( new Admiral_Pro_Customize_Font_Control( 
 			$wp_customize, 'title_font', array(
-				'label'      => _x( 'Headings', 'font setting', 'gambit-pro' ),
-				'section'    => 'gambit_pro_section_fonts',
-				'settings'   => 'gambit_theme_options[title_font]',
+				'label'      => _x( 'Headings', 'font setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_fonts',
+				'settings'   => 'admiral_theme_options[title_font]',
 				'priority' => 2
 			) ) 
 		);
 		
-		$wp_customize->add_setting( 'gambit_theme_options[navi_font]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[navi_font]', array(
 			'default'           => $default_options['navi_font'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'esc_attr'
 			)
 		);
-		$wp_customize->add_control( new Gambit_Pro_Customize_Font_Control( 
+		$wp_customize->add_control( new Admiral_Pro_Customize_Font_Control( 
 			$wp_customize, 'navi_font', array(
-				'label'      => _x( 'Navigation', 'font setting', 'gambit-pro' ),
-				'section'    => 'gambit_pro_section_fonts',
-				'settings'   => 'gambit_theme_options[navi_font]',
+				'label'      => _x( 'Navigation', 'font setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_fonts',
+				'settings'   => 'admiral_theme_options[navi_font]',
 				'priority' => 3
 			) ) 
 		);
 		
-		$wp_customize->add_setting( 'gambit_theme_options[widget_title_font]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[widget_title_font]', array(
 			'default'           => $default_options['widget_title_font'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'esc_attr'
 			)
 		);
-		$wp_customize->add_control( new Gambit_Pro_Customize_Font_Control( 
+		$wp_customize->add_control( new Admiral_Pro_Customize_Font_Control( 
 			$wp_customize, 'widget_title_font', array(
-				'label'      => _x( 'Widget Titles', 'font setting', 'gambit-pro' ),
-				'section'    => 'gambit_pro_section_fonts',
-				'settings'   => 'gambit_theme_options[widget_title_font]',
+				'label'      => _x( 'Widget Titles', 'font setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_fonts',
+				'settings'   => 'admiral_theme_options[widget_title_font]',
 				'priority' => 4
 			) ) 
 		);
 		
 		// Choose Available Fonts
-		$wp_customize->add_setting( 'gambit_theme_options[available_fonts]', array(
+		$wp_customize->add_setting( 'admiral_theme_options[available_fonts]', array(
 			'default'           => 'favorites',
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Gambit_Pro_Custom_Fonts', 'gambit_pro_sanitize_available_fonts' )
+			'sanitize_callback' => array( 'Admiral_Pro_Custom_Fonts', 'admiral_pro_sanitize_available_fonts' )
 			)
 		);
-		$wp_customize->add_control( new Gambit_Pro_Customize_Font_List_Control( 
-			$wp_customize, 'gambit_control_available_fonts', array(
-				'label'      => __( 'Choose available Fonts', 'gambit-pro' ),
-				'section'    => 'gambit_pro_section_fonts',
-				'settings'   => 'gambit_theme_options[available_fonts]',
+		$wp_customize->add_control( new Admiral_Pro_Customize_Font_List_Control( 
+			$wp_customize, 'admiral_control_available_fonts', array(
+				'label'      => __( 'Choose available Fonts', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_fonts',
+				'settings'   => 'admiral_theme_options[available_fonts]',
 				'choices' => array(
-					'default' => __( 'Default Browser Fonts (12)', 'gambit-pro' ),
-					'favorites' => __( 'ThemeZee Favorite Fonts (35)', 'gambit-pro' ),
-					'popular' => __( 'Most Popular Google Fonts (100)', 'gambit-pro' ),
-					'all' => __( 'All Google Fonts (650)', 'gambit-pro' )
+					'default' => __( 'Default Browser Fonts (12)', 'admiral-pro' ),
+					'favorites' => __( 'ThemeZee Favorite Fonts (35)', 'admiral-pro' ),
+					'popular' => __( 'Most Popular Google Fonts (100)', 'admiral-pro' ),
+					'all' => __( 'All Google Fonts (650)', 'admiral-pro' )
 					),
 				'priority' => 5
 			) ) 
@@ -317,6 +317,6 @@ class Gambit_Pro_Custom_Fonts {
 }
 
 // Run Class
-add_action( 'init', array( 'Gambit_Pro_Custom_Fonts', 'setup' ) );
+add_action( 'init', array( 'Admiral_Pro_Custom_Fonts', 'setup' ) );
 
 endif;

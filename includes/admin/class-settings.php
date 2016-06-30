@@ -1,12 +1,12 @@
 <?php
 /***
- * Gambit Pro Settings Class
+ * Admiral Pro Settings Class
  *
  * Registers all plugin settings with the WordPress Settings API.
  * Handles license key activation with the ThemeZee Store API.
  *
  * @link https://codex.wordpress.org/Settings_API
- * @package Gambit Pro
+ * @package Admiral Pro
  */
 
 // Exit if accessed directly
@@ -14,13 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 // Use class to avoid namespace collisions
-if ( ! class_exists( 'Gambit_Pro_Settings' ) ) :
+if ( ! class_exists( 'Admiral_Pro_Settings' ) ) :
 
-class Gambit_Pro_Settings {
+class Admiral_Pro_Settings {
 	/** Singleton *************************************************************/
 
 	/**
-	 * @var instance The one true Gambit_Pro_Settings instance
+	 * @var instance The one true Admiral_Pro_Settings instance
 	 */
 	private static $instance;
 	
@@ -32,7 +32,7 @@ class Gambit_Pro_Settings {
 	/**
      * Creates or returns an instance of this class.
      *
-     * @return Gambit_Pro_Settings A single instance of this class.
+     * @return Admiral_Pro_Settings A single instance of this class.
      */
 	public static function instance() {
  
@@ -62,7 +62,7 @@ class Gambit_Pro_Settings {
 		$this->options = wp_parse_args( 
 			
 			// Get saved theme options from WP database
-			get_option( 'gambit_pro_settings' , array() ), 
+			get_option( 'admiral_pro_settings' , array() ), 
 			
 			// Merge with Default Settings if setting was not saved yet
 			$this->default_settings()
@@ -113,33 +113,33 @@ class Gambit_Pro_Settings {
 	function register_settings() {
 
 		// Make sure that options exist in database
-		if ( false == get_option( 'gambit_pro_settings' ) ) {
-			add_option( 'gambit_pro_settings' );
+		if ( false == get_option( 'admiral_pro_settings' ) ) {
+			add_option( 'admiral_pro_settings' );
 		}
 		
 		// Add License Section
-		add_settings_section( 'gambit_pro_settings_license', esc_html__( 'Automatic Updates', 'gambit-pro' ), array( $this, 'license_section_intro' ), 'gambit_pro_settings' );
+		add_settings_section( 'admiral_pro_settings_license', esc_html__( 'Automatic Updates', 'admiral-pro' ), array( $this, 'license_section_intro' ), 'admiral_pro_settings' );
 		
 		// Add License Status Setting
 		add_settings_field(
-			'gambit_pro_settings[license_status]',
-			esc_html__( 'License Status', 'gambit-pro' ),
+			'admiral_pro_settings[license_status]',
+			esc_html__( 'License Status', 'admiral-pro' ),
 			array( $this, 'license_status' ),
-			'gambit_pro_settings',
-			'gambit_pro_settings_license'
+			'admiral_pro_settings',
+			'admiral_pro_settings_license'
 		);
 		
 		// Add License Key Setting
 		add_settings_field(
-			'gambit_pro_settings[license_key]',
-			esc_html__( 'License Key', 'gambit-pro' ),
+			'admiral_pro_settings[license_key]',
+			esc_html__( 'License Key', 'admiral-pro' ),
 			array( $this, 'license_key' ),
-			'gambit_pro_settings',
-			'gambit_pro_settings_license'
+			'admiral_pro_settings',
+			'admiral_pro_settings_license'
 		);
 
 		// Creates our settings in the options table
-		register_setting( 'gambit_pro_settings', 'gambit_pro_settings', array( $this, 'sanitize_settings' ) );
+		register_setting( 'admiral_pro_settings', 'admiral_pro_settings', array( $this, 'sanitize_settings' ) );
 	}
 
 	/**
@@ -148,7 +148,7 @@ class Gambit_Pro_Settings {
 	 * @return void
 	*/
 	function license_section_intro() {
-		printf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'gambit-pro' ), 'https://themezee.com/support/?utm_source=plugin-settings&utm_medium=textlink&utm_campaign=gambit-pro&utm_content=support' );
+		printf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'admiral-pro' ), 'https://themezee.com/support/?utm_source=plugin-settings&utm_medium=textlink&utm_campaign=admiral-pro&utm_content=support' );
 
 	}
 
@@ -163,7 +163,7 @@ class Gambit_Pro_Settings {
 			return $input;
 		}
 
-		$saved    = get_option( 'gambit_pro_settings', array() );
+		$saved    = get_option( 'admiral_pro_settings', array() );
 		if( ! is_array( $saved ) ) {
 			$saved = array();
 		}
@@ -186,7 +186,7 @@ class Gambit_Pro_Settings {
 	 *
 	 * Renders license status field.
 	 *
-	 * @global $this->options Array of all the Gambit Pro Options
+	 * @global $this->options Array of all the Admiral Pro Options
 	 * @return void
 	 */
 	function license_status() {
@@ -197,25 +197,25 @@ class Gambit_Pro_Settings {
 		
 		if( 'valid' === $license_status ) {
 			
-			$html .= '<span class="license-status license-active">' . esc_html__( 'Active', 'gambit-pro' ) . '</span>';
-			$html .= '<span class="license-description">' . esc_html__( 'You are receiving updates.', 'gambit-pro' ) . '</span>';
+			$html .= '<span class="license-status license-active">' . esc_html__( 'Active', 'admiral-pro' ) . '</span>';
+			$html .= '<span class="license-description">' . esc_html__( 'You are receiving updates.', 'admiral-pro' ) . '</span>';
 			
 		} elseif( 'expired' === $license_status ) {
 			
 			$renewal_url = esc_url( add_query_arg( array( 'edd_license_key' => $license_key, 'download_id' => GAMBIT_PRO_PRODUCT_ID ), 'https://themezee.com/checkout' ) );
 			
-			$html .= '<span class="license-status license-expired">' . esc_html__( 'Expired', 'gambit-pro' ) . '</span>';
-			$html .= '<p class="license-description">' . esc_html__( 'Your license has expired, renew today to continue getting updates and support!', 'gambit-pro' ) . '</p>';
-			$html .= '<a href="' . esc_url( $renewal_url ) . '" class="license-renewal button-primary">' . esc_html__( 'Renew Your License', 'gambit-pro' ) . '</a>';
+			$html .= '<span class="license-status license-expired">' . esc_html__( 'Expired', 'admiral-pro' ) . '</span>';
+			$html .= '<p class="license-description">' . esc_html__( 'Your license has expired, renew today to continue getting updates and support!', 'admiral-pro' ) . '</p>';
+			$html .= '<a href="' . esc_url( $renewal_url ) . '" class="license-renewal button-primary">' . esc_html__( 'Renew Your License', 'admiral-pro' ) . '</a>';
 		
 		} elseif( 'invalid' === $license_status ) {
 			
-			$html .= '<span class="license-status license-invalid">' . esc_html__( 'Invalid', 'gambit-pro' ) . '</span>';
-			$html .= '<p class="license-description">' . esc_html__( 'Please make sure that you have not reached the site limit and expiration date.', 'gambit-pro' ) . '</p>';
+			$html .= '<span class="license-status license-invalid">' . esc_html__( 'Invalid', 'admiral-pro' ) . '</span>';
+			$html .= '<p class="license-description">' . esc_html__( 'Please make sure that you have not reached the site limit and expiration date.', 'admiral-pro' ) . '</p>';
 		
 		} else {
 			
-			$html .= '<span class="license-status license-inactive">' . esc_html__( 'Inactive', 'gambit-pro' ) . '</span>';
+			$html .= '<span class="license-status license-inactive">' . esc_html__( 'Inactive', 'admiral-pro' ) . '</span>';
 		
 		}
 
@@ -227,7 +227,7 @@ class Gambit_Pro_Settings {
 	 *
 	 * Renders license key field.
 	 *
-	 * @global $this->options Array of all the Gambit Pro Options
+	 * @global $this->options Array of all the Admiral Pro Options
 	 * @return void
 	 */
 	function license_key() {
@@ -238,13 +238,13 @@ class Gambit_Pro_Settings {
 		
 		if( 'valid' === $license_status && ! empty( $license_key ) ) {
 			
-			$html .= '<input type="text" class="regular-text" readonly="readonly" id="gambit_pro_settings[license_key]" name="gambit_pro_settings[license_key]" value="' . esc_attr( stripslashes( $license_key ) ) . '"/><br/><br/>';
-			$html .= '<input type="submit" class="button" name="gambit_pro_deactivate_license" value="' . esc_attr__( 'Deactivate License', 'gambit-pro' ) . '"/>';
+			$html .= '<input type="text" class="regular-text" readonly="readonly" id="admiral_pro_settings[license_key]" name="admiral_pro_settings[license_key]" value="' . esc_attr( stripslashes( $license_key ) ) . '"/><br/><br/>';
+			$html .= '<input type="submit" class="button" name="admiral_pro_deactivate_license" value="' . esc_attr__( 'Deactivate License', 'admiral-pro' ) . '"/>';
 		
 		} else {
 			
-			$html .= '<input type="text" class="regular-text" id="gambit_pro_settings[license_key]" name="gambit_pro_settings[license_key]" value="' . esc_attr( stripslashes( $license_key ) ) . '"/><br/><br/>';
-			$html .= '<input type="submit" class="button" name="gambit_pro_activate_license" value="' . esc_attr__( 'Activate License', 'gambit-pro' ) . '"/>';
+			$html .= '<input type="text" class="regular-text" id="admiral_pro_settings[license_key]" name="admiral_pro_settings[license_key]" value="' . esc_attr( stripslashes( $license_key ) ) . '"/><br/><br/>';
+			$html .= '<input type="submit" class="button" name="admiral_pro_activate_license" value="' . esc_attr__( 'Activate License', 'admiral-pro' ) . '"/>';
 		
 		}
 
@@ -258,18 +258,18 @@ class Gambit_Pro_Settings {
 	*/
 	public function activate_license() {
 		
-		if( ! isset( $_POST['gambit_pro_settings'] ) )
+		if( ! isset( $_POST['admiral_pro_settings'] ) )
 			return;
 
-		if( ! isset( $_POST['gambit_pro_activate_license'] ) )
+		if( ! isset( $_POST['admiral_pro_activate_license'] ) )
 			return;
 
-		if( ! isset( $_POST['gambit_pro_settings']['license_key'] ) )
+		if( ! isset( $_POST['admiral_pro_settings']['license_key'] ) )
 			return;
 
 		// retrieve the license from the database
 		$status  = $this->get( 'license_status' );
-		$license = trim( $_POST['gambit_pro_settings']['license_key'] );
+		$license = trim( $_POST['admiral_pro_settings']['license_key'] );
 
 		// data to send in our API request
 		$api_params = array(
@@ -294,9 +294,9 @@ class Gambit_Pro_Settings {
 
 		$options['license_status'] = $license_data->license;
 
-		update_option( 'gambit_pro_settings', $options );
+		update_option( 'admiral_pro_settings', $options );
 
-		delete_transient( 'gambit_pro_license_check' );
+		delete_transient( 'admiral_pro_license_check' );
 
 	}
 	
@@ -307,17 +307,17 @@ class Gambit_Pro_Settings {
 	*/
 	public function deactivate_license() {
 
-		if( ! isset( $_POST['gambit_pro_settings'] ) )
+		if( ! isset( $_POST['admiral_pro_settings'] ) )
 			return;
 
-		if( ! isset( $_POST['gambit_pro_deactivate_license'] ) )
+		if( ! isset( $_POST['admiral_pro_deactivate_license'] ) )
 			return;
 
-		if( ! isset( $_POST['gambit_pro_settings']['license_key'] ) )
+		if( ! isset( $_POST['admiral_pro_settings']['license_key'] ) )
 			return;
 
 		// retrieve the license from the database
-		$license = trim( $_POST['gambit_pro_settings']['license_key'] );
+		$license = trim( $_POST['admiral_pro_settings']['license_key'] );
 
 		// data to send in our API request
 		$api_params = array(
@@ -339,9 +339,9 @@ class Gambit_Pro_Settings {
 
 		$options['license_status'] = 'inactive';
 
-		update_option( 'gambit_pro_settings', $options );
+		update_option( 'admiral_pro_settings', $options );
 
-		delete_transient( 'gambit_pro_license_check' );
+		delete_transient( 'admiral_pro_license_check' );
 
 	}
 
@@ -352,11 +352,11 @@ class Gambit_Pro_Settings {
 	*/
 	public function check_license() {
 
-		if( ! empty( $_POST['gambit_pro_settings'] ) ) {
+		if( ! empty( $_POST['admiral_pro_settings'] ) ) {
 			return; // Don't fire when saving settings
 		}
 
-		$status = get_transient( 'gambit_pro_license_check' );
+		$status = get_transient( 'admiral_pro_license_check' );
 		
 		// Run the license check a maximum of once per day
 		if( false === $status ) {
@@ -394,9 +394,9 @@ class Gambit_Pro_Settings {
 			
 			$options['license_status'] = $status;
 			
-			update_option( 'gambit_pro_settings', $options );
+			update_option( 'admiral_pro_settings', $options );
 
-			set_transient( 'gambit_pro_license_check', $status, DAY_IN_SECONDS );
+			set_transient( 'admiral_pro_license_check', $status, DAY_IN_SECONDS );
 
 		}
 
@@ -416,6 +416,6 @@ class Gambit_Pro_Settings {
 }
 
 // Run Setting Class
-Gambit_Pro_Settings::instance();
+Admiral_Pro_Settings::instance();
 
 endif;

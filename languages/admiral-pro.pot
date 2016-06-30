@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Gambit Pro\n"
+"Project-Id-Version: Admiral Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
 "POT-Creation-Date: 2016-05-03 17:35+0100\n"
 "PO-Revision-Date: 2016-05-03 17:35+0100\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: gambit-pro.php:197
+#: admiral-pro.php:197
 msgid "Settings"
 msgstr ""
 

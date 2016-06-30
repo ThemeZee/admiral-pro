@@ -1,17 +1,17 @@
 /*
- * Gambit Settings CSS
+ * Admiral Settings CSS
  *
  * CSS Stylesheet for settings page on Appearance -> Pro Version
  *
- * @package Gambit Pro
+ * @package Admiral Pro
  */
 
 /* License Settings */
-.gambit-pro-settings-wrap {
+.admiral-pro-settings-wrap {
 	margin: 25px 0 0;
 }
 
-.gambit-pro-settings-wrap .license-status {
+.admiral-pro-settings-wrap .license-status {
 	display: inline-block;
 	color: #fff;
 	background: #444;
@@ -20,19 +20,19 @@
 	text-transform: uppercase;
 }
 
-.gambit-pro-settings-wrap .license-active {
+.admiral-pro-settings-wrap .license-active {
 	background: green;
 }
 
-.gambit-pro-settings-wrap .license-invalid,
-.gambit-pro-settings-wrap .license-expired {
+.admiral-pro-settings-wrap .license-invalid,
+.admiral-pro-settings-wrap .license-expired {
 	background: red;
 }
 
-.gambit-pro-settings-wrap .license-description {
+.admiral-pro-settings-wrap .license-description {
 	margin: 16px 0 0;
 }
 
-.gambit-pro-settings-wrap .license-renewal {
+.admiral-pro-settings-wrap .license-renewal {
 	margin: 16px 0 0;
 }
