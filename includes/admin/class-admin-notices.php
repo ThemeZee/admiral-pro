@@ -53,7 +53,7 @@ class Admiral_Pro_Admin_Notices {
 			<div class="notice notice-info">
 				<p>
 					<?php printf( __( 'Please enter your license key for the %1$s add-on in order to receive updates and support. <a href="%2$s">Enter License Key</a>', 'admiral-pro' ),
-						GAMBIT_PRO_NAME,
+						ADMIRAL_PRO_NAME,
 						admin_url( 'themes.php?page=admiral-pro' ) ); 
 					?>
 					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'admiral_pro_action' => 'dismiss_notices', 'admiral_pro_notice' => 'activate_license' ) ), 'admiral_pro_dismiss_notice', 'admiral_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'admiral-pro' ); ?></a>
@@ -81,7 +81,7 @@ class Admiral_Pro_Admin_Notices {
 			<div class="notice notice-warning">
 				<p>
 					<?php printf( __( 'Your license for %1$s has expired. Please <a href="%2$s">renew</a> to continue getting updates and support!', 'admiral-pro' ),
-						GAMBIT_PRO_NAME,
+						ADMIRAL_PRO_NAME,
 						admin_url( 'themes.php?page=admiral-pro' ) ); 
 					?>
 					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'admiral_pro_action' => 'dismiss_notices', 'admiral_pro_notice' => 'expired_license' ) ), 'admiral_pro_dismiss_notice', 'admiral_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'admiral-pro' ); ?></a>
@@ -106,7 +106,7 @@ class Admiral_Pro_Admin_Notices {
 			<div class="notice notice-warning">
 				<p>
 					<?php printf( __( 'The %1$s add-on needs the %2$s theme activated in order to work. You should deactivate %1$s if you have switched to another theme permanently.', 'admiral-pro' ),
-						GAMBIT_PRO_NAME,
+						ADMIRAL_PRO_NAME,
 						'Admiral'
 					); ?>
 					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'admiral_pro_action' => 'dismiss_notices', 'admiral_pro_notice' => 'missing_theme' ) ), 'admiral_pro_dismiss_notice', 'admiral_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'admiral-pro' ); ?></a>

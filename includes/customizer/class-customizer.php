@@ -95,7 +95,7 @@ class Admiral_Pro_Customizer {
 	 */
 	static function customize_preview_js() {
 		
-		wp_enqueue_script( 'admiral-pro-customizer-js', GAMBIT_PRO_PLUGIN_URL . 'assets/js/customizer.js', array( 'customize-preview' ), GAMBIT_PRO_VERSION, true );
+		wp_enqueue_script( 'admiral-pro-customizer-js', ADMIRAL_PRO_PLUGIN_URL . 'assets/js/customizer.js', array( 'customize-preview' ), ADMIRAL_PRO_VERSION, true );
 	
 	}
 
@@ -106,7 +106,7 @@ class Admiral_Pro_Customizer {
 	 */
 	static function customize_preview_css() {
 		
-		wp_enqueue_style( 'admiral-pro-customizer-css', GAMBIT_PRO_PLUGIN_URL . 'assets/css/customizer.css', array(), GAMBIT_PRO_VERSION );
+		wp_enqueue_style( 'admiral-pro-customizer-css', ADMIRAL_PRO_PLUGIN_URL . 'assets/css/customizer.css', array(), ADMIRAL_PRO_VERSION );
 	
 	}
 

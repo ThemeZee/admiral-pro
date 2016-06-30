@@ -202,7 +202,7 @@ class Admiral_Pro_Settings {
 			
 		} elseif( 'expired' === $license_status ) {
 			
-			$renewal_url = esc_url( add_query_arg( array( 'edd_license_key' => $license_key, 'download_id' => GAMBIT_PRO_PRODUCT_ID ), 'https://themezee.com/checkout' ) );
+			$renewal_url = esc_url( add_query_arg( array( 'edd_license_key' => $license_key, 'download_id' => ADMIRAL_PRO_PRODUCT_ID ), 'https://themezee.com/checkout' ) );
 			
 			$html .= '<span class="license-status license-expired">' . esc_html__( 'Expired', 'admiral-pro' ) . '</span>';
 			$html .= '<p class="license-description">' . esc_html__( 'Your license has expired, renew today to continue getting updates and support!', 'admiral-pro' ) . '</p>';
@@ -275,13 +275,13 @@ class Admiral_Pro_Settings {
 		$api_params = array(
 			'edd_action'=> 'activate_license',
 			'license' 	=> $license,
-			'item_name' => urlencode( GAMBIT_PRO_NAME ),
-			'item_id'   => GAMBIT_PRO_PRODUCT_ID,
+			'item_name' => urlencode( ADMIRAL_PRO_NAME ),
+			'item_id'   => ADMIRAL_PRO_PRODUCT_ID,
 			'url'       => home_url()
 		);
 		
 		// Call the custom API.
-		$response = wp_remote_post( GAMBIT_PRO_STORE_API_URL, array( 'timeout' => 35, 'sslverify' => true, 'body' => $api_params ) );
+		$response = wp_remote_post( ADMIRAL_PRO_STORE_API_URL, array( 'timeout' => 35, 'sslverify' => true, 'body' => $api_params ) );
 
 		// make sure the response came back okay
 		if ( is_wp_error( $response ) )
@@ -323,13 +323,13 @@ class Admiral_Pro_Settings {
 		$api_params = array(
 			'edd_action'=> 'deactivate_license',
 			'license' 	=> $license,
-			'item_name' => urlencode( GAMBIT_PRO_NAME ),
-			'item_id'   => GAMBIT_PRO_PRODUCT_ID,
+			'item_name' => urlencode( ADMIRAL_PRO_NAME ),
+			'item_id'   => ADMIRAL_PRO_PRODUCT_ID,
 			'url'       => home_url()
 		);
 		
 		// Call the custom API.
-		$response = wp_remote_post( GAMBIT_PRO_STORE_API_URL, array( 'timeout' => 35, 'sslverify' => true, 'body' => $api_params ) );
+		$response = wp_remote_post( ADMIRAL_PRO_STORE_API_URL, array( 'timeout' => 35, 'sslverify' => true, 'body' => $api_params ) );
 
 		// make sure the response came back okay
 		if ( is_wp_error( $response ) )
@@ -370,13 +370,13 @@ class Admiral_Pro_Settings {
 				$api_params = array(
 					'edd_action'=> 'check_license',
 					'license' 	=> $license_key,
-					'item_name' => urlencode( GAMBIT_PRO_NAME ),
-					'item_id'   => GAMBIT_PRO_PRODUCT_ID,
+					'item_name' => urlencode( ADMIRAL_PRO_NAME ),
+					'item_id'   => ADMIRAL_PRO_PRODUCT_ID,
 					'url'       => home_url()
 				);
 				
 				// Call the custom API.
-				$response = wp_remote_post( GAMBIT_PRO_STORE_API_URL, array( 'timeout' => 25, 'sslverify' => true, 'body' => $api_params ) );
+				$response = wp_remote_post( ADMIRAL_PRO_STORE_API_URL, array( 'timeout' => 25, 'sslverify' => true, 'body' => $api_params ) );
 
 				// make sure the response came back okay
 				if ( is_wp_error( $response ) )

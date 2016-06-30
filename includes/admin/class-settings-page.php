@@ -67,7 +67,7 @@ class Admiral_Pro_Settings_Page {
 
 		<div class="wrap pro-version-wrap">
 
-			<h1><?php echo GAMBIT_PRO_NAME; ?> <?php echo GAMBIT_PRO_VERSION; ?></h1>
+			<h1><?php echo ADMIRAL_PRO_NAME; ?> <?php echo ADMIRAL_PRO_VERSION; ?></h1>
 			
 			<div id="admiral-pro-settings" class="admiral-pro-settings-wrap">
 				
@@ -100,7 +100,7 @@ class Admiral_Pro_Settings_Page {
 		}
 		
 		// Embed theme info css style
-		wp_enqueue_style( 'admiral-pro-settings-css', plugins_url('/assets/css/settings.css', dirname( dirname(__FILE__) ) ), array(), GAMBIT_PRO_VERSION );
+		wp_enqueue_style( 'admiral-pro-settings-css', plugins_url('/assets/css/settings.css', dirname( dirname(__FILE__) ) ), array(), ADMIRAL_PRO_VERSION );
 
 	}
 	

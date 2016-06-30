@@ -45,7 +45,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 		public function enqueue() {
 
 			// Register and Enqueue Custom Font JS Constructor
-			wp_enqueue_script( 'admiral-pro-custom-font-control', GAMBIT_PRO_PLUGIN_URL . 'assets/js/custom-font-control.js', array( 'customize-controls' ), GAMBIT_PRO_VERSION, true );
+			wp_enqueue_script( 'admiral-pro-custom-font-control', ADMIRAL_PRO_PLUGIN_URL . 'assets/js/custom-font-control.js', array( 'customize-controls' ), ADMIRAL_PRO_VERSION, true );
 		
 		}
 		
