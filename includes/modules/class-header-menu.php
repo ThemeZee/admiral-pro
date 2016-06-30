@@ -40,22 +40,26 @@ class Admiral_Pro_Header_Menu {
 	static function display_header_menu() {
 
 		// Check if there is a header menu.
-		if ( has_nav_menu( 'header' ) ) {
+		if ( has_nav_menu( 'header' ) ) : ?>
 
-			echo '<nav id="header-navigation" class="sub-navigation navigation clearfix" role="navigation">';
+			<div id="header-navigation-wrap" class="header-navigation-wrap container clearfix">
 
-			// Display Top Navigation
-			wp_nav_menu( array(
-				'theme_location' => 'header',
-				'container' => false,
-				'menu_class' => 'sub-navigation-menu',
-				'echo' => true,
-				'fallback_cb' => '')
-			);
+				<nav id="header-navigation" class="header-navigation navigation clearfix" role="navigation">
 
-			echo '</nav>';
+					<?php // Display Top Navigation
+					wp_nav_menu( array(
+						'theme_location' => 'header',
+						'container' => false,
+						'menu_class' => 'header-navigation-menu',
+						'echo' => true,
+						'fallback_cb' => '')
+					); ?>
 
-		}
+				</nav>
+
+			</div>
+
+		<?php endif;
 
 	}
 
