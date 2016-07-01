@@ -2,7 +2,7 @@
 /***
  * Magazine Posts List Widget
  *
- * Display the latest posts from a selected category in a list layout. 
+ * Display the latest posts from a selected category in a list layout.
  * Intented to be used in the Magazine Homepage widget area to built a magazine layouted page.
  *
  * @package Admiral
@@ -14,15 +14,15 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 	 * Widget Constructor
 	 */
 	function __construct() {
-		
+
 		// Setup Widget
 		parent::__construct(
 			'admiral-magazine-posts-list', // ID
 			sprintf( esc_html__( 'Magazine Posts: List (%s)', 'admiral-pro' ), 'Admiral Pro' ), // Name
-			array( 
-				'classname' => 'admiral_magazine_posts_list', 
+			array(
+				'classname' => 'admiral_magazine_posts_list',
 				'description' => esc_html__( 'Displays your posts from a selected category in a simple list layout. Please use this widget ONLY in the Magazine Homepage widget area.', 'admiral-pro' ),
-				'customize_selective_refresh' => true,  
+				'customize_selective_refresh' => true,
 			) // Args
 		);
 
@@ -30,41 +30,40 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 		add_action( 'save_post', array( $this, 'delete_widget_cache' ) );
 		add_action( 'deleted_post', array( $this, 'delete_widget_cache' ) );
 		add_action( 'switch_theme', array( $this, 'delete_widget_cache' ) );
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Set default settings of the widget
 	 */
 	private function default_settings() {
-	
+
 		$defaults = array(
 			'title'				=> '',
 			'category'			=> 0,
 			'number'			=> 3,
 			'meta_date'			=> true,
-			'meta_author'		=> true,
-			'meta_category'		=> true,
+			'meta_comments'		=> true,
 		);
-		
+
 		return $defaults;
-		
+
 	}
 
-	
+
 	/**
 	 * Main Function to display the widget
-	 * 
+	 *
 	 * @uses this->render()
-	 * 
+	 *
 	 * @param array $args / Parameters from widget area created with register_sidebar()
 	 * @param array $instance / Settings for this widget instance
 	 */
 	function widget( $args, $instance ) {
 
 		$cache = array();
-				
+
 		// Get Widget Object Cache
 		if ( ! $this->is_preview() ) {
 			$cache = wp_cache_get( 'widget_admiral_magazine_posts_list', 'widget' );
@@ -78,13 +77,13 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 			echo $cache[ $this->id ];
 			return;
 		}
-		
+
 		// Start Output Buffering
 		ob_start();
 
 		// Get Widget Settings
 		$settings = wp_parse_args( $instance, $this->default_settings() );
-		
+
 		// Output
 		echo $args['before_widget'];
 	?>
@@ -92,17 +91,17 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 
 			<?php // Display Title
 			$this->widget_title( $args, $settings ); ?>
-			
+
 			<div class="widget-magazine-posts-content">
-			
+
 				<?php $this->render( $settings ); ?>
-				
+
 			</div>
-			
+
 		</div>
 	<?php
 		echo $args['after_widget'];
-		
+
 		// Set Cache
 		if ( ! $this->is_preview() ) {
 			$cache[ $this->id ] = ob_get_flush();
@@ -110,22 +109,22 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 		} else {
 			ob_end_flush();
 		}
-	
+
 	}
-	
-	
+
+
 	/**
 	 * Renders the Widget Content
 	 *
 	 * Switches between horizontal and vertical layout style based on widget settings
-	 * 
+	 *
 	 * @uses this->magazine_posts_horizontal() or this->magazine_posts_vertical()
 	 * @used-by this->widget()
 	 *
 	 * @param array $instance / Settings for this widget instance
 	 */
 	function render( $settings ) {
-		
+
 		// Get latest posts from database
 		$query_arguments = array(
 			'posts_per_page' => (int)$settings['number'],
@@ -134,120 +133,111 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 		);
 		$posts_query = new WP_Query( $query_arguments );
 		$i = 0;
-		
+
 		// Check if there are posts
 		if( $posts_query->have_posts() ) :
-		
+
 			// Limit the number of words for the excerpt
 			add_filter( 'excerpt_length', 'admiral_magazine_posts_excerpt_length' );
-			
+
 			// Display Posts
 			while( $posts_query->have_posts() ) : $posts_query->the_post(); ?>
-				
+
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?>>
-		
-					<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
-						<?php the_post_thumbnail( 'admiral-thumbnail-archive' ); ?>
-					</a>
-					
+
+					<?php admiral_post_image(); ?>
+
 					<header class="entry-header">
 
-						<?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
-						
 						<?php $this->entry_meta( $settings ); ?>
-					
+
+						<?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+
 					</header><!-- .entry-header -->
 
 					<div class="entry-content clearfix">
-						
+
 						<?php the_excerpt(); ?>
-						<?php admiral_more_link(); ?>
-					
+
 					</div><!-- .entry-content -->
 
 				</article>
-			
-			<?php 
+
+			<?php
 			endwhile;
-			
+
 			// Remove excerpt filter
 			remove_filter('excerpt_length', 'admiral_magazine_posts_excerpt_length');
-			
+
 		endif;
-		
+
 		// Reset Postdata
 		wp_reset_postdata();
 
 	}
-	
+
 	/**
 	 * Displays Entry Meta of Posts
 	 */
-	function entry_meta( $settings ) { 
+	function entry_meta( $settings ) {
 
 		$postmeta = '';
-		
+
 		if( true == $settings['meta_date'] ) {
-		
+
 			$postmeta .= admiral_meta_date();
-			
+
 		}
-		
-		if( true == $settings['meta_author'] ) {
-		
-			$postmeta .= admiral_meta_author();
-			
+
+		if( true == $settings['meta_comments'] ) {
+
+			$postmeta .= admiral_meta_comments();
+
 		}
-		
-		if( true == $settings['meta_category'] ) {
-		
-			$postmeta .= admiral_meta_category();
-			
-		}
-		
+
 		if( $postmeta ) {
-		
+
 			echo '<div class="entry-meta">' . $postmeta . '</div>';
-			
+
 		}
-	
+
 	} // entry_meta()
-	
-	
+
+
 	/**
 	 * Displays Widget Title
 	 */
 	function widget_title( $args, $settings ) {
-		
+
 		// Add Widget Title Filter
 		$widget_title = apply_filters( 'widget_title', $settings['title'], $settings, $this->id_base );
-		
+
 		if( ! empty( $widget_title ) ) :
 
 			// Link Category Title
-			if( $settings['category'] > 0 ) : 
-			
+			if( $settings['category'] > 0 ) :
+
 				// Set Link URL and Title for Category
 				$link_title = sprintf( esc_html__( 'View all posts from category %s', 'admiral-pro' ), get_cat_name( $settings['category'] ) );
 				$link_url = esc_url( get_category_link( $settings['category'] ) );
-				
+
 				// Display Widget Title with link to category archive
 				echo '<div class="widget-header">';
 				echo '<h1 class="widget-title"><a class="category-archive-link" href="'. $link_url .'" title="'. $link_title . '">'. $widget_title . '</a></h1>';
 				echo '</div>';
-			
+
 			else:
-				
+
 				// Display default Widget Title without link
-				echo $args['before_title'] . $widget_title . $args['after_title']; 
-			
+				echo $args['before_title'] . $widget_title . $args['after_title'];
+
 			endif;
-			
+
 		endif;
 
 	} // widget_title()
-	
-	
+
+
 	/**
 	 * Update Widget Settings
 	 *
@@ -262,22 +252,21 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 		$instance['category'] = (int)$new_instance['category'];
 		$instance['number'] = (int)$new_instance['number'];
 		$instance['meta_date'] = !empty($new_instance['meta_date']);
-		$instance['meta_author'] = !empty($new_instance['meta_author']);
-		$instance['meta_category'] = !empty($new_instance['meta_category']);
-		
+		$instance['meta_comments'] = !empty($new_instance['meta_comments']);
+
 		$this->delete_widget_cache();
-		
+
 		return $instance;
 	}
-	
-	
+
+
 	/**
 	 * Displays Widget Settings Form in the Backend
 	 *
 	 * @param array $instance / Settings for this widget instance
 	 */
 	function form( $instance ) {
-	
+
 		// Get Widget Settings
 		$settings = wp_parse_args( $instance, $this->default_settings() );
 ?>
@@ -298,48 +287,41 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 					'name'               => $this->get_field_name('category'),
 					'id'                 => $this->get_field_id('category')
 				);
-				wp_dropdown_categories( $args ); 
+				wp_dropdown_categories( $args );
 			?>
 		</p>
-		
+
 		<p>
 			<label for="<?php echo $this->get_field_id('number'); ?>"><?php esc_html_e( 'Number of posts:', 'admiral-pro' ); ?>
 				<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $settings['number']; ?>" size="3" />
 			</label>
 		</p>
-		
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'meta_date' ); ?>">
 				<input class="checkbox" type="checkbox" <?php checked( $settings['meta_date'] ) ; ?> id="<?php echo $this->get_field_id( 'meta_date' ); ?>" name="<?php echo $this->get_field_name( 'meta_date' ); ?>" />
 				<?php esc_html_e( 'Display post date', 'admiral-pro' ); ?>
 			</label>
 		</p>
-		
+
 		<p>
-			<label for="<?php echo $this->get_field_id( 'meta_author' ); ?>">
-				<input class="checkbox" type="checkbox" <?php checked( $settings['meta_author'] ) ; ?> id="<?php echo $this->get_field_id( 'meta_author' ); ?>" name="<?php echo $this->get_field_name( 'meta_author' ); ?>" />
-				<?php esc_html_e( 'Display post author', 'admiral-pro' ); ?>
+			<label for="<?php echo $this->get_field_id( 'meta_comments' ); ?>">
+				<input class="checkbox" type="checkbox" <?php checked( $settings['meta_comments'] ) ; ?> id="<?php echo $this->get_field_id( 'meta_comments' ); ?>" name="<?php echo $this->get_field_name( 'meta_comments' ); ?>" />
+				<?php esc_html_e( 'Display post comments', 'admiral-pro' ); ?>
 			</label>
 		</p>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id( 'meta_category' ); ?>">
-				<input class="checkbox" type="checkbox" <?php checked( $settings['meta_category'] ) ; ?> id="<?php echo $this->get_field_id( 'meta_category' ); ?>" name="<?php echo $this->get_field_name( 'meta_category' ); ?>" />
-				<?php esc_html_e( 'Display post category', 'admiral-pro' ); ?>
-			</label>
-		</p>
-		
+
 <?php
 	} // form()
-	
-	
+
+
 	/**
 	 * Delete Widget Cache
 	 */
 	public function delete_widget_cache() {
-		
+
 		wp_cache_delete( 'widget_admiral_magazine_posts_list', 'widget' );
-		
+
 	}
-	
+
 }
