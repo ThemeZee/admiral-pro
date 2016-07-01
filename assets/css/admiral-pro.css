@@ -8,7 +8,6 @@
  * @package Admiral Pro
  */
 
-
 /*--------------------------------------------------------------
 # Header Widgets
 --------------------------------------------------------------*/
@@ -251,27 +250,15 @@
 /*--------------------------------------------------------------
 # Footer Navigation
 --------------------------------------------------------------*/
-.footer-navigation-wrap {
-	background: #154585;
+.site-footer .site-info {
+	float: left;
+	width: 50%;
 }
 
 .footer-navigation {
-	background: rgba(255,255,255,0.1);
-	padding: 0 1em;
-}
-
-.footer-navigation .today {
-	display: inline-block;
-	color: #fff;
-	margin: 0;
-	padding: 0.75em 0;
-	font-size: 13px;
-	font-size: 0.8125rem;
-	font-weight: bold;
-}
-
-.footer-navigation-toggle {
-	display: none;
+	float: right;
+	width: 50%;
+	padding: 0.5em 0;
 }
 
 .footer-navigation-menu {
@@ -285,32 +272,13 @@
 }
 
 .footer-navigation-menu li {
-	float: left;
-	position: relative;
+	display: inline-block;
+	margin-left: 1.5em;
 }
 
-.footer-navigation-menu a {
-	display: block;
-	font-size: 13px;
-	font-size: 0.8125rem;
-	font-weight: bold;
-	padding: 0.75em 1em;
-	text-transform: uppercase;
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
-	transition: all 0.2s ease;
-}
-
-.footer-navigation-menu a:link,
-.footer-navigation-menu a:visited {
-	color: #fff;
-}
-
-.footer-navigation-menu a:hover,
-.footer-navigation-menu a:active {
-	background: rgba(255,255,255,0.2);
+.footer-navigation-menu li a {
+	display: inline-block;
+	padding: 0.5em 0;
 }
 
 /*--------------------------------------------------------------
@@ -342,7 +310,7 @@
 /*--------------------------------------------------------------
 ## Desktop X-Large ( < 1200px )
 --------------------------------------------------------------*/
-@media only screen and (max-width: 80em) {
+@media only screen and (max-width: 90em) {
 
 	.footer-widgets-wrap {
 		margin-top: 2em;
@@ -352,12 +320,6 @@
 	.footer-widget-column .widget {
 		margin: 0 0 2em;
 	}
-
-}
-
-@media only screen and (max-width: 70em) {
-
-
 
 }
 
@@ -534,22 +496,24 @@
 	}
 
 	/* Footer Line */
-	.footer-navigation .today {
-		display: none;
+	.site-footer .site-info,
+	.footer-navigation {
+		float: none;
+		width: 100%;
 	}
 
-	.site-footer .site-info {
-		max-width: 80%;
+	.footer-navigation {
+		margin-top: 0;
+		padding: 0 0 1em;
 	}
 
-}
+	.footer-navigation-menu {
+		float: none;
+	}
 
-/*--------------------------------------------------------------
-## Tablet Large ( < 880px )
---------------------------------------------------------------*/
-@media only screen and (max-width: 55em) {
-
-
+	.footer-navigation-menu li {
+		margin: 0 1.5em 0 0;
+	}
 
 }
 
@@ -561,10 +525,6 @@
 	.footer-widgets-wrap {
 		margin-top: 0;
 		border-top: 2px solid #e5e5e5;
-	}
-
-	.site-footer .site-info {
-		max-width: 60%;
 	}
 
 }
@@ -637,79 +597,6 @@
 		width: 100%;
 	}
 
-	/*** Mobile Footer Navigation ***/
-	.footer-navigation .today {
-		display: inline-block;
-		margin-left: 1em;
-	}
-
-	/* Footer Navigation Toggle */
-	.footer-navigation-toggle {
-		float: right;
-		display: inline-block;
-		background: none;
-		padding: 0.9em;
-	}
-
-	.footer-navigation-toggle:hover,
-	.footer-navigation-toggle:active,
-	.footer-navigation-toggle:focus {
-		cursor: pointer;
-		background: rgba(255,255,255,0.2);
-	}
-
-	.footer-navigation-toggle:after {
-		float: left;
-		display: inline-block;
-		font-family: 'Genericons';
-		font-size: 20px;
-		font-weight: normal;
-		line-height: 1;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-decoration: inherit;
-		vertical-align: middle;
-		content: '\f419';
-		color: #fff;
-	}
-
-	/* Footer Navigation Menu */
-	.footer-navigation {
-		display: block;
-		width: 100%;
-		padding: 0;
-	}
-
-	.footer-navigation-menu {
-		float: right;
-		display: none;
-		width: 100%;
-		padding: 0;
-		border-top: 1px solid rgba(255,255,255,0.1);
-	}
-
-	.footer-navigation-menu li {
-		float: none;
-	}
-
-	.footer-navigation-menu a {
-		padding: 0.8em 1em;
-		border-bottom: 1px solid rgba(255,255,255,0.1);
-	}
-
-	/* Footer Line */
-	.site-footer .site-info {
-		float: none;
-		display: block;
-		max-width: 100%;
-		padding-bottom: 0.5em;
-	}
-
-	.site-footer .social-icons-navigation {
-		float: left;
-		margin: 0 1em 1em;
-	}
-
 }
 
 /*--------------------------------------------------------------
@@ -754,15 +641,6 @@
 /*--------------------------------------------------------------
 ## Mobile Small ( < 320px )
 --------------------------------------------------------------*/
-@media only screen and (max-width: 25em) {
-
-
-
-}
-
-/*--------------------------------------------------------------
-## Mobile Small ( < 320px )
---------------------------------------------------------------*/
 @media only screen and (max-width: 20em) {
 
 	.widget-magazine-posts-list .type-post .entry-title {
@@ -780,15 +658,6 @@
 @media only screen and (min-width: 60.001em) {
 
 	.header-navigation-menu {
-		display: block !important;
-	}
-
-}
-
-/* Ensure footer navigation is visible on desktop view */
-@media only screen and (min-width: 40.001em) {
-
-	.footer-navigation-menu {
 		display: block !important;
 	}
 
