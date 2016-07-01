@@ -18,7 +18,7 @@
 
 .header-widget {
 	float: right;
-	margin: 0.5em 0 0 1.5em;
+	margin: 0.75em 0 0 1.5em;
 }
 
 .header-widget ul {
@@ -471,59 +471,27 @@
 		display: inline;
 	}
 
-	.header-navigation-menu > .menu-item-has-children > a:after {
+	.header-navigation-menu > .menu-item-has-children > a:after,
+	.header-navigation-menu ul .menu-item-has-children > a:after {
 		display: none;
-	}
-
-
-	/* Top Navigation Toggle */
-	.header-navigation-toggle {
-		display: inline-block;
-		padding: 0.75em;
-		background: none;
-	}
-
-	.header-navigation-toggle:hover,
-	.header-navigation-toggle:active,
-	.header-navigation-toggle:focus {
-		cursor: pointer;
-		background: none;
-	}
-
-	.header-navigation-toggle:after {
-		float: left;
-		display: inline-block;
-		font-family: 'Genericons';
-		font-size: 18px;
-		font-weight: normal;
-		line-height: 1;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-decoration: inherit;
-		vertical-align: middle;
-		content: '\f419';
-		color: #fff;
-	}
-
-	.header-navigation-toggle:hover {
-		background: rgba(0,0,0,0.25);
 	}
 
 	/* Top Navigation Menu */
+	.header-navigation-wrap {
+		display: none;
+	}
+
 	.header-navigation-menu {
 		float: left;
 		width: 100%;
-		display: none;
-		border-top: 1px solid rgba(255,255,255,0.1);
+		background: #fff;
+		border-bottom: 1px solid #ddd;
 	}
 
 	.header-navigation-menu a {
 		display: block;
 		clear: left;
-		font-size: 13px;
-		font-size: 0.8125rem;
-		padding: 1em 1.25em;
-		border-bottom: 1px solid rgba(255,255,255,0.1);
+		border-bottom: 1px solid #eee;
 	}
 
 	.header-navigation-menu li:last-child a {
@@ -532,7 +500,7 @@
 
 	.header-navigation-menu ul {
 		width: 100%;
-		border-top: none;
+		box-shadow: none;
 	}
 
 	.header-navigation-menu ul a {
@@ -542,11 +510,19 @@
 	}
 
 	.header-navigation-menu ul li:last-child a {
-		border-bottom: 1px solid rgba(255,255,255,0.1);
+		border-bottom: 1px solid #eee;
 	}
 
 	.header-navigation-menu ul ul a {
+		padding-left: 4.5em;
+	}
+
+	.header-navigation-menu ul ul ul a {
 		padding-left: 6em;
+	}
+
+		.header-navigation-menu ul ul ul ul a {
+		padding-left: 7.5em;
 	}
 
 	/* Mobile Submenu Dropdowns */
@@ -571,11 +547,11 @@
 		text-decoration: inherit;
 		vertical-align: middle;
 		content: '\f431';
-		color: #fff;
+		color: #777;
 	}
 
 	.header-navigation-menu .submenu-dropdown-toggle:hover:before {
-		color: rgba(255,255,255,0.6);
+		color: #303030;
 	}
 
 	.header-navigation-menu .submenu-dropdown-toggle.active:before {
