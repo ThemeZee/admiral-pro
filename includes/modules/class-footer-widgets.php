@@ -27,7 +27,7 @@ class Admiral_Pro_Footer_Widgets {
 			return;
 		}
 
-		// Display footer widgets
+		// Display widgets
 		add_action( 'admiral_before_footer', array( __CLASS__, 'display_widgets' ) );
 
 	}
@@ -40,33 +40,15 @@ class Admiral_Pro_Footer_Widgets {
 	static function display_widgets() {
 
 		// Check if there are footer widgets
-		if( is_active_sidebar( 'footer-left' )
-			or is_active_sidebar( 'footer-center-left' )
-			or is_active_sidebar( 'footer-center-right' )
-			or is_active_sidebar( 'footer-right' ) ) : ?>
+		if( is_active_sidebar( 'footer' ) ) : ?>
 
-			<div id="footer-widgets-bg" class="footer-widgets-background">
+			<div id="footer-widgets-wrap" class="footer-widgets-wrap">
 
-				<div id="footer-widgets-wrap" class="footer-widgets-wrap container">
+				<div id="footer-widgets" class="footer-widgets container">
 
-					<div id="footer-widgets" class="footer-widgets clearfix"  role="complementary">
+					<div id="footer-widgets-columns" class="footer-widgets-columns clearfix"  role="complementary">
 
-						<div class="footer-widget-column widget-area">
-							<?php dynamic_sidebar('footer-left'); ?>
-						</div>
-
-						<div class="footer-widget-column widget-area">
-							<?php dynamic_sidebar('footer-center-left'); ?>
-						</div>
-
-
-						<div class="footer-widget-column widget-area">
-							<?php dynamic_sidebar('footer-center-right'); ?>
-						</div>
-
-						<div class="footer-widget-column widget-area">
-							<?php dynamic_sidebar('footer-right'); ?>
-						</div>
+						<?php dynamic_sidebar( 'footer' ); ?>
 
 					</div>
 
@@ -90,49 +72,16 @@ class Admiral_Pro_Footer_Widgets {
 			return;
 		}
 
-		// Register Footer Left widget area
+		// Register Footer widget area
 		register_sidebar( array(
-			'name' => __( 'Footer Left', 'admiral-pro' ),
-			'id' => 'footer-left',
-			'description' => __( 'Appears on footer on the left hand side.', 'admiral-pro' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix">',
-			'after_widget' => '</aside>',
+			'name' => esc_html__( 'Footer', 'admiral-pro' ),
+			'id' => 'footer',
+			'description' => esc_html__( 'Appears on the footer area.', 'admiral-pro' ),
+			'before_widget' => '<div class="footer-widget-column"><aside id="%1$s" class="widget %2$s clearfix">',
+			'after_widget' => '</aside></div>',
 			'before_title' => '<div class="widget-header"><h3 class="widget-title">',
 			'after_title' => '</h3></div>',
-		));
-
-		// Register Footer Center Left widget area
-		register_sidebar( array(
-			'name' => __( 'Footer Center Left', 'admiral-pro' ),
-			'id' => 'footer-center-left',
-			'description' => __( 'Appears on footer on center left position.', 'admiral-pro' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix">',
-			'after_widget' => '</aside>',
-			'before_title' => '<div class="widget-header"><h3 class="widget-title">',
-			'after_title' => '</h3></div>',
-		));
-
-		// Register Footer Center Right widget area
-		register_sidebar( array(
-			'name' => __( 'Footer Center Right', 'admiral-pro' ),
-			'id' => 'footer-center-right',
-			'description' => __( 'Appears on footer on center right position.', 'admiral-pro' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix">',
-			'after_widget' => '</aside>',
-			'before_title' => '<div class="widget-header"><h3 class="widget-title">',
-			'after_title' => '</h3></div>',
-		));
-
-		// Register Footer Right widget area
-		register_sidebar( array(
-			'name' => __( 'Footer Right', 'admiral-pro' ),
-			'id' => 'footer-right',
-			'description' => __( 'Appears on footer on the right hand side.', 'admiral-pro' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix">',
-			'after_widget' => '</aside>',
-			'before_title' => '<div class="widget-header"><h3 class="widget-title">',
-			'after_title' => '</h3></div>',
-		));
+		) );
 
 	}
 

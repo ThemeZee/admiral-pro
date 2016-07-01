@@ -122,7 +122,7 @@
 
 .header-navigation-menu ul .menu-item-has-children > a:after {
 	display: inline-block;
-	margin: 0.3em 0 0 0.2em;
+	margin: 0.5em 0 0 0.2em;
 	font-size: 14px;
 	line-height: 1;
 	font-family: 'Genericons';
@@ -224,47 +224,28 @@
 /*--------------------------------------------------------------
 # Footer Widgets
 --------------------------------------------------------------*/
-.footer-widgets-background {
-	background: #154585;
-	padding: 2em 2em 0;
+.footer-widgets-wrap {
+	margin-top: 3em;
+	background: #fff;
+	padding-top: 3em;
 }
 
-.footer-widgets {
+.footer-widgets-columns {
+	display: flex;
+	flex-wrap: wrap;
 	margin-right: -2em;
 }
 
 .footer-widget-column {
-	float: left;
 	width: 25%;
 	padding-right: 2em;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-.footer-widgets .widget {
-	color: #fff;
-	background: none;
-	border: none;
-	box-shadow: none;
-}
-
-.footer-widgets .widget-header {
-	background: rgba(255,255,255,0.1);
-}
-
-.footer-widgets .widget-title {
-	color: #fff;
-}
-
-.footer-widgets .widget a:link,
-.footer-widgets .widget a:visited  {
-	color: #eee;
-}
-
-.footer-widgets .widget a:hover,
-.footer-widgets .widget a:active  {
-	color: rgba(255,255,255,0.6);
+.footer-widget-column .widget {
+	width: 100%;
+	margin: 0 0 3em;
+	padding: 0;
 }
 
 /*--------------------------------------------------------------
@@ -272,7 +253,6 @@
 --------------------------------------------------------------*/
 .footer-navigation-wrap {
 	background: #154585;
-	margin-bottom: -4px;
 }
 
 .footer-navigation {
@@ -336,10 +316,6 @@
 /*--------------------------------------------------------------
 # Footer Social Menu
 --------------------------------------------------------------*/
-.site-footer {
-	border-top: 4px solid rgba(255,255,255,0.1);
-}
-
 .site-footer .social-icons-navigation {
 	float: right;
 	margin: 0.25em 1em 0;
@@ -368,21 +344,19 @@
 --------------------------------------------------------------*/
 @media only screen and (max-width: 80em) {
 
-	.footer-widgets-background {
-		padding: 1.5em 1.5em 0;
+	.footer-widgets-wrap {
+		margin-top: 2em;
+		padding-top: 2em;
 	}
 
-	.footer-widgets {
-		margin-right: -1.5em;
-	}
-
-	.footer-widget-column {
-		padding-right: 1.5em;
+	.footer-widget-column .widget {
+		margin: 0 0 2em;
 	}
 
 }
 
 @media only screen and (max-width: 70em) {
+
 
 
 }
@@ -395,14 +369,6 @@
 	/* Magazine Post Widgets */
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .entry-content {
 		display: none;
-	}
-
-	.footer-widget-column {
-		width: 50%;
-	}
-
-	.footer-widget-column:nth-child(3) {
-		clear: left;
 	}
 
 }
@@ -433,6 +399,11 @@
 	/* Magazine Post Widgets */
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .entry-content {
 		display: inline-block;
+	}
+
+	/* Footer Widgets */
+	.footer-widget-column {
+		width: 50%;
 	}
 
 	/*** Mobile Top Navigation ***/
@@ -587,6 +558,11 @@
 --------------------------------------------------------------*/
 @media only screen and (max-width: 50em) {
 
+	.footer-widgets-wrap {
+		margin-top: 0;
+		border-top: 2px solid #e5e5e5;
+	}
+
 	.site-footer .site-info {
 		max-width: 60%;
 	}
@@ -649,6 +625,16 @@
 	.widget-magazine-posts-list .type-post .entry-title {
 		font-size: 18px;
 		font-size: 1.125rem;
+	}
+
+	/* Footer Widgets */
+	.footer-widgets {
+		margin-right: 0;
+	}
+
+	.footer-widget-column {
+		display: block;
+		width: 100%;
 	}
 
 	/*** Mobile Footer Navigation ***/
@@ -734,16 +720,6 @@
 	/* Magazine Homepage: Category Post Widgets */
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .medium-posts {
 		margin-right: 0;
-	}
-
-	.footer-widgets {
-		margin-right: 0;
-	}
-
-	.footer-widget-column {
-		float: none;
-		width: 100%;
-		padding-right: 0;
 	}
 
 }
