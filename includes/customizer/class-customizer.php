@@ -77,10 +77,10 @@ class Admiral_Pro_Customizer {
 			'content_primary_color'				=> '#25b5d5',
 			'content_secondary_color'			=> '#154585',
 			'footer_color'						=> '#154585',
-			'text_font' 						=> 'Roboto',
-			'title_font' 						=> 'Roboto',
-			'navi_font' 						=> 'Roboto',
-			'widget_title_font' 				=> 'Roboto',
+			'text_font' 						=> 'Open Sans',
+			'title_font' 						=> 'Montserrat',
+			'navi_font' 						=> 'Montserrat',
+			'widget_title_font' 				=> 'Montserrat',
 			'available_fonts'					=> 'favorites'
 		);
 
