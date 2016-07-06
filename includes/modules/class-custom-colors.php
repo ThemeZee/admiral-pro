@@ -22,253 +22,226 @@ class Admiral_Pro_Custom_Colors {
 	 * @return void
 	*/
 	static function setup() {
-		
+
 		// Return early if Admiral Theme is not active
 		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
 			return;
 		}
-		
+
 		// Add Custom Color CSS code to custom stylesheet output
-		add_filter( 'admiral_pro_custom_css_stylesheet', array( __CLASS__, 'custom_colors_css' ) ); 
-		
+		add_filter( 'admiral_pro_custom_css_stylesheet', array( __CLASS__, 'custom_colors_css' ) );
+
 		// Add Custom Color Settings
 		add_action( 'customize_register', array( __CLASS__, 'color_settings' ) );
 
 	}
-	
+
 	/**
 	 * Adds Color CSS styles in the head area to override default colors
 	 *
 	 */
-	static function custom_colors_css( $custom_css ) { 
-		
+	static function custom_colors_css( $custom_css ) {
+
 		// Get Theme Options from Database
 		$theme_options = Admiral_Pro_Customizer::get_theme_options();
-		
+
 		// Get Default Fonts from settings
 		$default_options = Admiral_Pro_Customizer::get_default_options();
 
 		// Set Color CSS Variable
 		$color_css = '';
-		
-		// Set Primary Navigation Color
-		if ( $theme_options['navi_primary_color'] != $default_options['navi_primary_color'] ) { 
-		
+
+		// Set Navigation Color
+		if ( $theme_options['navi_color'] != $default_options['navi_color'] ) {
+
 			$color_css .= '
-				/* Primary Navigation Color Setting */
-				.header-bar-wrap, 
-				.top-navigation-menu ul,
-				.main-navigation-menu a:hover,
-				.main-navigation-menu a:active,
-				.main-navigation-menu li.current-menu-item > a {
-					background: '. $theme_options['navi_primary_color'] .';
+				/* Navigation Color Setting */
+				.header-bar-wrap,
+				.main-navigation-menu ul {
+					background: '. $theme_options['navi_color'] .';
 				}
 				';
-				
+
 		}
-		
-		// Set Secondary Navigation Color
-		if ( $theme_options['navi_secondary_color'] != $default_options['navi_secondary_color'] ) { 
-		
-			$color_css .= '
-				
-				/* Secondary Navigation Color Setting */
-				.primary-navigation,
-				.main-navigation-toggle,
-				.main-navigation-menu ul,
-				.top-navigation-menu a:hover, 
-				.top-navigation-menu a:active,
-				.header-bar .social-icons-menu li a:hover,
-				.header-bar .social-icons-menu li a:active {
-					background: '. $theme_options['navi_secondary_color'] .';
-				}
-				';
-				
-		}
-		
+
 		// Set Primary Content Color
-		if ( $theme_options['content_primary_color'] != $default_options['content_primary_color'] ) { 
-		
+		if ( $theme_options['content_primary_color'] != $default_options['content_primary_color'] ) {
+
 			$color_css .= '
 				/* Content Primary Color Setting */
-				a,
+				.site-title,
+				.site-title a:link,
+				.site-title a:visited,
+				.entry-title,
+				.entry-title a:link,
+				.entry-title a:visited,
+				.blog-header,
+				.archive-header,
+				.page-header,
+				.sidebar-header,
+				.sidebar-navigation-menu a:link,
+				.sidebar-navigation-menu a:visited,
+				.widget-title,
+				.widget-title a:link,
+				.widget-title a:visited {
+					color: '. $theme_options['content_primary_color'] .';
+				}
+
+				.site-title a:hover,
+				.site-title a:active,
+				.entry-title a:hover,
+				.entry-title a:active,
+				.widget-title a:hover,
+				.widget-title a:active {
+					color: #ee4444;
+				}
+
+				button:hover,
+				input[type="button"]:hover,
+				input[type="reset"]:hover,
+				input[type="submit"]:hover,
+				button:focus,
+				input[type="button"]:focus,
+				input[type="reset"]:focus,
+				input[type="submit"]:focus,
+				button:active,
+				input[type="button"]:active,
+				input[type="reset"]:active,
+				input[type="submit"]:active,
+				.widget_tag_cloud .tagcloud a,
+				.entry-tags .meta-tags a,
+				.post-pagination a,
+				.post-pagination .current,
+				.infinite-scroll #infinite-handle span,
+				.tzwb-tabbed-content .tzwb-tabnavi li a:link,
+				.tzwb-tabbed-content .tzwb-tabnavi li a:visited,
+				.tzwb-social-icons .social-icons-menu li a:hover {
+					background: '. $theme_options['content_primary_color'] .';
+				}
+
+				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
+				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
+				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
+					background: #ee4444;
+				}
+				';
+
+		}
+
+		/* Set Secondary Content Color */
+		if ( $theme_options['content_secondary_color'] != $default_options['content_secondary_color'] ) {
+
+			$color_css .= '
+				/* Content Secondary Color Setting */
 				a:link,
 				a:visited,
-				.site-title,
-				.site-title a:link, 
-				.site-title a:visited {
-					color: '. $theme_options['content_primary_color'] .';
+				.site-title a:hover,
+				.site-title a:active,
+				.entry-title a:hover,
+				.entry-title a:active,
+				.widget-title a:hover,
+				.widget-title a:active {
+					color: '. $theme_options['content_secondary_color'] .';
 				}
 
 				a:hover,
 				a:focus,
-				a:active,
-				.site-title a:hover,
-				.site-title a:active {
-					color: #154585;
+				a:active {
+					color: #303030;
 				}
-				
+
 				button,
 				input[type="button"],
 				input[type="reset"],
 				input[type="submit"],
-				.more-link,
-				.entry-tags .meta-tags a,
-				.widget_tag_cloud .tagcloud a, 
+				.widget_tag_cloud .tagcloud a:hover,
+				.widget_tag_cloud .tagcloud a:active,
+				.entry-tags .meta-tags a:hover,
+				.entry-tags .meta-tags a:active,
+				.post-pagination a:hover,
+				.post-pagination a:active,
 				.post-pagination .current,
-				.infinite-scroll #infinite-handle span,
-				.tzwb-social-icons .social-icons-menu li a,
-				.post-slider-controls .zeeflex-direction-nav a {
-					color: #fff;
-					background: '. $theme_options['content_primary_color'] .';
-				}
-				
-				button:hover,
-				input[type="button"]:hover,
-				input[type="reset"]:hover,
-				input[type="submit"]:hover,
-				button:focus,
-				input[type="button"]:focus,
-				input[type="reset"]:focus,
-				input[type="submit"]:focus,
-				button:active,
-				input[type="button"]:active,
-				input[type="reset"]:active,
-				input[type="submit"]:active,
-				.more-link:hover,
-				.more-link:focus,
-				.more-link:active,
-				.entry-tags .meta-tags a:hover, 
-				.entry-tags .meta-tags a:focus,
-				.entry-tags .meta-tags a:active,
-				.widget_tag_cloud .tagcloud a:hover, 
-				.widget_tag_cloud .tagcloud a:focus,
-				.widget_tag_cloud .tagcloud a:active,
 				.infinite-scroll #infinite-handle span:hover,
-				.infinite-scroll #infinite-handle span:active,
-				.tzwb-social-icons .social-icons-menu li a:hover,
-				.tzwb-social-icons .social-icons-menu li a:focus,
-				.tzwb-social-icons .social-icons-menu li a:active {
-					background: #154585;
-				}
-				';
-				
-		}
-		
-		/* Set Link Color */
-		if ( $theme_options['content_secondary_color'] != $default_options['content_secondary_color'] ) { 
-		
-			$color_css .= '
-				/* Content Secondary Color Setting */
-				a:hover,
-				a:focus,
-				a:active,
-				.site-title a:hover,
-				.site-title a:active,
-				.page-title,
-				.entry-title,
-				.entry-title a:link, 
-				.entry-title a:visited {
-					color: '. $theme_options['content_secondary_color'] .';
-				}
-				
-				.entry-title a:hover, 
-				.entry-title a:active {
-					color: #25b5d5;
-				}
-				
-				.widget-header,
-				.page-header,
-				button:hover,
-				input[type="button"]:hover,
-				input[type="reset"]:hover,
-				input[type="submit"]:hover,
-				button:focus,
-				input[type="button"]:focus,
-				input[type="reset"]:focus,
-				input[type="submit"]:focus,
-				button:active,
-				input[type="button"]:active,
-				input[type="reset"]:active,
-				input[type="submit"]:active,
-				.more-link:hover,
-				.more-link:focus,
-				.more-link:active,
-				.entry-tags .meta-tags a:hover, 
-				.entry-tags .meta-tags a:focus,
-				.entry-tags .meta-tags a:active,
-				.widget_tag_cloud .tagcloud a:hover, 
-				.widget_tag_cloud .tagcloud a:focus,
-				.widget_tag_cloud .tagcloud a:active,
-				.post-pagination a:link,
-				.post-pagination a:visited,
-				.infinite-scroll #infinite-handle span:hover,
-				.infinite-scroll #infinite-handle span:active,
-				.tzwb-tabbed-content .tzwb-tabnavi li a, 
-				.tzwb-tabbed-content .tzwb-tabnavi li a:link,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:visited,
-				.tzwb-social-icons .social-icons-menu li a:hover,
-				.tzwb-social-icons .social-icons-menu li a:focus,
-				.tzwb-social-icons .social-icons-menu li a:active,
-				.post-slider-controls .zeeflex-direction-nav a:hover,
-				.post-slider-controls .zeeflex-direction-nav a:active {
+				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
+				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
+				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab,
+				.tzwb-social-icons .social-icons-menu li a {
 					background: '. $theme_options['content_secondary_color'] .';
 				}
-				
-				.post-pagination a:hover,
-				.post-pagination a:active,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
-				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
-					background: #25b5d5;
-				}
 				';
-				
+
 		}
-		
+
 		// Set Primary Hover Content Color
-		if ( $theme_options['content_primary_color'] != $default_options['content_primary_color'] ) { 
-		
+		if ( $theme_options['content_primary_color'] != $default_options['content_primary_color'] ) {
+
 			$color_css .= '
 				/* Content Primary Hover Color Setting */
-				.entry-title a:hover, 
-				.entry-title a:active {
+				a:hover,
+				a:focus,
+				a:active {
 					color: '. $theme_options['content_primary_color'] .';
 				}
-				
-				.post-pagination a:hover,
-				.post-pagination a:active,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
-				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
-					background: '. $theme_options['content_primary_color'] .';
+				';
+
+		}
+
+		// Set Main Sidebar Color
+		if ( $theme_options['main_sidebar_color'] != $default_options['main_sidebar_color'] ) {
+
+			$color_css .= '
+
+				/* Main Sidebar Color Setting */
+				.main-sidebar .sidebar-header,
+				.main-sidebar-toggle,
+				.main-sidebar-toggle:hover,
+				.main-sidebar-toggle:active,
+				.main-sidebar-toggle:focus {
+					background: '. $theme_options['main_sidebar_color'] .';
+					border-color: '. $theme_options['main_sidebar_color'] .';
 				}
 				';
-				
+
 		}
-		
-		// Set Footer Color
-		if ( $theme_options['footer_color'] != $default_options['footer_color'] ) { 
-		
+
+		// Set Small Sidebar Color
+		if ( $theme_options['small_sidebar_color'] != $default_options['small_sidebar_color'] ) {
+
 			$color_css .= '
-				
+
+				/* Small Sidebar Color Setting */
+				.small-sidebar .sidebar-header,
+				.small-sidebar-toggle,
+				.small-sidebar-toggle:hover,
+				.small-sidebar-toggle:active,
+				.small-sidebar-toggle:focus {
+					background: '. $theme_options['small_sidebar_color'] .';
+					border-color: '. $theme_options['small_sidebar_color'] .';
+				}
+				';
+
+		}
+
+		// Set Footer Color
+		if ( $theme_options['footer_color'] != $default_options['footer_color'] ) {
+
+			$color_css .= '
+
 				/* Footer Color Setting */
-				.site-footer-wrap,
-				.footer-navigation-wrap,
-				.footer-widgets-background {
+				.footer-wrap {
 					background: '. $theme_options['footer_color'] .';
 				}
 				';
-				
+
 		}
-		
+
 		$color_css = $color_css <> '' ? $color_css : '/* No Custom Colors settings were saved */';
 		$custom_css .= $color_css;
-		
+
 		return $custom_css;
-		
+
 	}
-	
+
 	/**
 	 * Adds all color settings in the Customizer
 	 *
@@ -280,48 +253,31 @@ class Admiral_Pro_Custom_Colors {
 		$wp_customize->add_section( 'admiral_pro_section_colors', array(
 			'title'    => __( 'Theme Colors', 'admiral-pro' ),
 			'priority' => 60,
-			'panel' => 'admiral_options_panel' 
+			'panel' => 'admiral_options_panel'
 			)
 		);
-		
+
 		// Get Default Colors from settings
 		$default_options = Admiral_Pro_Customizer::get_default_options();
-		
+
 		// Add Navigation Primary Color setting
-		$wp_customize->add_setting( 'admiral_theme_options[navi_primary_color]', array(
-			'default'           => $default_options['navi_primary_color'],
+		$wp_customize->add_setting( 'admiral_theme_options[navi_color]', array(
+			'default'           => $default_options['navi_color'],
 			'type'           	=> 'option',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
-		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'admiral_theme_options[navi_primary_color]', array(
-				'label'      => _x( 'Navigation (primary)', 'color setting', 'admiral-pro' ),
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'admiral_theme_options[navi_color]', array(
+				'label'      => _x( 'Navigation', 'color setting', 'admiral-pro' ),
 				'section'    => 'admiral_pro_section_colors',
-				'settings'   => 'admiral_theme_options[navi_primary_color]',
+				'settings'   => 'admiral_theme_options[navi_color]',
 				'priority' => 1
-			) ) 
+			) )
 		);
-		
-		// Add Navigation Secondary Color setting
-		$wp_customize->add_setting( 'admiral_theme_options[navi_secondary_color]', array(
-			'default'           => $default_options['navi_secondary_color'],
-			'type'           	=> 'option',
-			'transport'         => 'refresh',
-			'sanitize_callback' => 'sanitize_hex_color'
-			)
-		);
-		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'admiral_theme_options[navi_secondary_color]', array(
-				'label'      => _x( 'Navigation (secondary)', 'color setting', 'admiral-pro' ),
-				'section'    => 'admiral_pro_section_colors',
-				'settings'   => 'admiral_theme_options[navi_secondary_color]',
-				'priority' => 2
-			) ) 
-		);
-		
-		// Add Post Primary Color setting
+
+		// Add Content Primary Color setting
 		$wp_customize->add_setting( 'admiral_theme_options[content_primary_color]', array(
 			'default'           => $default_options['content_primary_color'],
 			'type'           	=> 'option',
@@ -329,16 +285,16 @@ class Admiral_Pro_Custom_Colors {
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
-		$wp_customize->add_control( new WP_Customize_Color_Control( 
+		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'admiral_theme_options[content_primary_color]', array(
 				'label'      => _x( 'Content (primary)', 'color setting', 'admiral-pro' ),
 				'section'    => 'admiral_pro_section_colors',
 				'settings'   => 'admiral_theme_options[content_primary_color]',
-				'priority' => 3
-			) ) 
+				'priority' => 2
+			) )
 		);
-		
-		// Add Link and Button Color setting
+
+		// Add Content Secondray Color setting
 		$wp_customize->add_setting( 'admiral_theme_options[content_secondary_color]', array(
 			'default'           => $default_options['content_secondary_color'],
 			'type'           	=> 'option',
@@ -346,15 +302,49 @@ class Admiral_Pro_Custom_Colors {
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
-		$wp_customize->add_control( new WP_Customize_Color_Control( 
+		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'admiral_theme_options[content_secondary_color]', array(
 				'label'      => _x( 'Content (secondary)', 'color setting', 'admiral-pro' ),
 				'section'    => 'admiral_pro_section_colors',
 				'settings'   => 'admiral_theme_options[content_secondary_color]',
-				'priority' => 4
-			) ) 
+				'priority' => 3
+			) )
 		);
-		
+
+		// Add Main Sidebar Color setting
+		$wp_customize->add_setting( 'admiral_theme_options[main_sidebar_color]', array(
+			'default'           => $default_options['main_sidebar_color'],
+			'type'           	=> 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color'
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'admiral_theme_options[main_sidebar_color]', array(
+				'label'      => _x( 'Main Sidebar Title', 'color setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_colors',
+				'settings'   => 'admiral_theme_options[main_sidebar_color]',
+				'priority' => 4
+			) )
+		);
+
+		// Add Main Sidebar Color setting
+		$wp_customize->add_setting( 'admiral_theme_options[small_sidebar_color]', array(
+			'default'           => $default_options['small_sidebar_color'],
+			'type'           	=> 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color'
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'admiral_theme_options[small_sidebar_color]', array(
+				'label'      => _x( 'Small Sidebar Title', 'color setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_colors',
+				'settings'   => 'admiral_theme_options[small_sidebar_color]',
+				'priority' => 5
+			) )
+		);
+
 		// Add Footer Widgets Color setting
 		$wp_customize->add_setting( 'admiral_theme_options[footer_color]', array(
 			'default'           => $default_options['footer_color'],
@@ -363,15 +353,15 @@ class Admiral_Pro_Custom_Colors {
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
-		$wp_customize->add_control( new WP_Customize_Color_Control( 
+		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'admiral_theme_options[footer_color]', array(
 				'label'      => _x( 'Footer', 'color setting', 'admiral-pro' ),
 				'section'    => 'admiral_pro_section_colors',
 				'settings'   => 'admiral_theme_options[footer_color]',
-				'priority' => 5
-			) ) 
+				'priority' => 6
+			) )
 		);
-		
+
 	}
 
 }

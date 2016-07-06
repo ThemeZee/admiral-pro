@@ -8,10 +8,36 @@
 
 ( function( $ ) {
 
-	/* Footer Option */
+	/* Navi Color */
+	wp.customize( 'admiral_theme_options[navi_color]', function( value ) {
+		value.bind( function( newval ) {
+			$('.header-bar-wrap, .main-navigation-menu ul')
+				.css('background', newval );
+		} );
+	} );
+
+	/* Main Sidebar Color */
+	wp.customize( 'admiral_theme_options[main_sidebar_color]', function( value ) {
+		value.bind( function( newval ) {
+			$('.main-sidebar .sidebar-header, .main-sidebar-toggle')
+				.css('background', newval )
+				.css('border-color', newval );
+		} );
+	} );
+
+	/* Small Sidebar Color */
+	wp.customize( 'admiral_theme_options[small_sidebar_color]', function( value ) {
+		value.bind( function( newval ) {
+			$('.small-sidebar .sidebar-header, .small-sidebar-toggle')
+				.css('background', newval )
+				.css('border-color', newval );
+		} );
+	} );
+
+	/* Footer Color */
 	wp.customize( 'admiral_theme_options[footer_color]', function( value ) {
 		value.bind( function( newval ) {
-			$('.site-footer-wrap, .footer-navigation-wrap, .footer-widgets-background')
+			$('.footer-wrap')
 				.css('background', newval );
 		} );
 	} );
