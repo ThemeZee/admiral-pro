@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Admiral Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2016-05-03 17:35+0100\n"
-"PO-Revision-Date: 2016-05-03 17:35+0100\n"
+"POT-Creation-Date: 2016-07-07 14:43+0100\n"
+"PO-Revision-Date: 2016-07-07 14:43+0100\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
 "Language: en_US\n"
@@ -175,136 +175,119 @@ msgstr ""
 msgid "Update Fonts"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:281
+#: includes/modules/class-custom-colors.php:272
 msgid "Theme Colors"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:300
+#: includes/modules/class-custom-colors.php:291
 msgctxt "color setting"
-msgid "Navigation (primary)"
+msgid "Navigation"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:317
+#: includes/modules/class-custom-colors.php:308
 msgctxt "color setting"
-msgid "Navigation (secondary)"
+msgid "Header"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:334
+#: includes/modules/class-custom-colors.php:325
 msgctxt "color setting"
 msgid "Content (primary)"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:351
+#: includes/modules/class-custom-colors.php:342
 msgctxt "color setting"
 msgid "Content (secondary)"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:368
+#: includes/modules/class-custom-colors.php:359
 msgctxt "color setting"
-msgid "Footer"
+msgid "Main Sidebar Title"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:203
+#: includes/modules/class-custom-colors.php:376
+msgctxt "color setting"
+msgid "Small Sidebar Title"
+msgstr ""
+
+#: includes/modules/class-custom-colors.php:393
+msgctxt "color setting"
+msgid "Footer Widgets"
+msgstr ""
+
+#: includes/modules/class-custom-colors.php:410
+msgctxt "color setting"
+msgid "Footer Line"
+msgstr ""
+
+#: includes/modules/class-custom-fonts.php:210
 msgid "Theme Fonts"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:222
+#: includes/modules/class-custom-fonts.php:229
 msgid "Base Font"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:238
+#: includes/modules/class-custom-fonts.php:245
 msgctxt "font setting"
 msgid "Headings"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:254
+#: includes/modules/class-custom-fonts.php:261
 msgctxt "font setting"
 msgid "Navigation"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:270
+#: includes/modules/class-custom-fonts.php:277
 msgctxt "font setting"
 msgid "Widget Titles"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:287
+#: includes/modules/class-custom-fonts.php:294
 msgid "Choose available Fonts"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:291
+#: includes/modules/class-custom-fonts.php:298
 msgid "Default Browser Fonts (12)"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:292
+#: includes/modules/class-custom-fonts.php:299
 msgid "ThemeZee Favorite Fonts (35)"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:293
+#: includes/modules/class-custom-fonts.php:300
 msgid "Most Popular Google Fonts (100)"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:294
+#: includes/modules/class-custom-fonts.php:301
 msgid "All Google Fonts (650)"
 msgstr ""
 
-#: includes/modules/class-footer-line.php:149
+#: includes/modules/class-footer-line.php:108
 msgid "Footer Settings"
 msgstr ""
 
-#: includes/modules/class-footer-line.php:164
+#: includes/modules/class-footer-line.php:123
 msgid "Footer Text"
 msgstr ""
 
-#: includes/modules/class-footer-line.php:181
+#: includes/modules/class-footer-line.php:140
 msgid "Display Credit Link to ThemeZee on footer line"
 msgstr ""
 
-#: includes/modules/class-footer-line.php:219
+#: includes/modules/class-footer-line.php:177
 msgid "Footer Navigation"
 msgstr ""
 
-#: includes/modules/class-footer-line.php:220
-msgid "Footer Social Icons"
+#: includes/modules/class-footer-widgets.php:77
+msgid "Footer"
 msgstr ""
 
-#: includes/modules/class-footer-widgets.php:95
-msgid "Footer Left"
+#: includes/modules/class-footer-widgets.php:79
+msgid "Appears on the footer area."
 msgstr ""
 
-#: includes/modules/class-footer-widgets.php:97
-msgid "Appears on footer on the left hand side."
-msgstr ""
-
-#: includes/modules/class-footer-widgets.php:106
-msgid "Footer Center Left"
-msgstr ""
-
-#: includes/modules/class-footer-widgets.php:108
-msgid "Appears on footer on center left position."
-msgstr ""
-
-#: includes/modules/class-footer-widgets.php:117
-msgid "Footer Center Right"
-msgstr ""
-
-#: includes/modules/class-footer-widgets.php:119
-msgid "Appears on footer on center right position."
-msgstr ""
-
-#: includes/modules/class-footer-widgets.php:128
-msgid "Footer Right"
-msgstr ""
-
-#: includes/modules/class-footer-widgets.php:130
-msgid "Appears on footer on the right hand side."
-msgstr ""
-
-#: includes/modules/class-header-bar.php:102
-msgid "Top Navigation"
-msgstr ""
-
-#: includes/modules/class-header-bar.php:103
-msgid "Header Social Icons"
+#: includes/modules/class-header-menu.php:79
+msgid "Header Navigation"
 msgstr ""
 
 #: includes/modules/class-header-spacing.php:97
@@ -316,93 +299,67 @@ msgid "Logo Spacing (default: 0)"
 msgstr ""
 
 #: includes/modules/class-header-spacing.php:129
-msgid "Header Spacing (default: 20)"
+msgid "Header Spacing (default: 25)"
 msgstr ""
 
-#: includes/modules/class-post-meta.php:53
-msgid "Post Meta"
+#: includes/modules/class-header-widgets.php:69
+msgid "Header"
 msgstr ""
 
-#: includes/modules/class-post-meta.php:69
-#: includes/widgets/widget-magazine-posts-boxed.php:457
-#: includes/widgets/widget-magazine-posts-list.php:313
-#: includes/widgets/widget-magazine-posts-single.php:305
-msgid "Display post date"
+#: includes/modules/class-header-widgets.php:71
+msgid "Appears on header area. You can use a search or ad widget here."
 msgstr ""
 
-#: includes/modules/class-post-meta.php:85
-#: includes/widgets/widget-magazine-posts-boxed.php:464
-#: includes/widgets/widget-magazine-posts-list.php:320
-#: includes/widgets/widget-magazine-posts-single.php:312
-msgid "Display post author"
-msgstr ""
-
-#: includes/modules/class-post-meta.php:101
-msgid "Display post categories"
-msgstr ""
-
-#: includes/modules/class-post-meta.php:119
-msgid "Single Posts"
-msgstr ""
-
-#: includes/modules/class-post-meta.php:135
-msgid "Display featured image on single posts"
-msgstr ""
-
-#: includes/modules/class-post-meta.php:151
-msgid "Display post tags on single posts"
-msgstr ""
-
-#: includes/modules/class-post-meta.php:166
-msgid "Display post navigation on single posts"
-msgstr ""
-
-#: includes/widgets/widget-magazine-posts-boxed.php:21
+#: includes/widgets/widget-magazine-posts-boxed.php:23
 #, php-format
 msgid "Magazine Posts: Boxed (%s)"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-boxed.php:24
+#: includes/widgets/widget-magazine-posts-boxed.php:26
 msgid ""
 "Displays your posts from a selected category in a boxed layout. Please use "
 "this widget ONLY in the Magazine Homepage widget area."
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-boxed.php:373
-#: includes/widgets/widget-magazine-posts-list.php:230
-#: includes/widgets/widget-magazine-posts-single.php:229
+#: includes/widgets/widget-magazine-posts-boxed.php:366
+#: includes/widgets/widget-magazine-posts-list.php:221
+#: includes/widgets/widget-magazine-posts-single.php:220
 #, php-format
 msgid "View all posts from category %s"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-boxed.php:426
-#: includes/widgets/widget-magazine-posts-list.php:284
-#: includes/widgets/widget-magazine-posts-single.php:282
+#: includes/widgets/widget-magazine-posts-boxed.php:418
+#: includes/widgets/widget-magazine-posts-list.php:274
+#: includes/widgets/widget-magazine-posts-single.php:272
 msgid "Title:"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-boxed.php:432
-#: includes/widgets/widget-magazine-posts-list.php:290
-#: includes/widgets/widget-magazine-posts-single.php:288
+#: includes/widgets/widget-magazine-posts-boxed.php:424
+#: includes/widgets/widget-magazine-posts-list.php:280
+#: includes/widgets/widget-magazine-posts-single.php:278
 msgid "Category:"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-boxed.php:435
-#: includes/widgets/widget-magazine-posts-list.php:293
-#: includes/widgets/widget-magazine-posts-single.php:291
+#: includes/widgets/widget-magazine-posts-boxed.php:427
+#: includes/widgets/widget-magazine-posts-list.php:283
+#: includes/widgets/widget-magazine-posts-single.php:281
 msgid "All Categories"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-boxed.php:447
+#: includes/widgets/widget-magazine-posts-boxed.php:439
 msgid "Post Layout:"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-boxed.php:449
+#: includes/widgets/widget-magazine-posts-boxed.php:441
 msgid "Horizontal Arrangement"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-boxed.php:450
+#: includes/widgets/widget-magazine-posts-boxed.php:442
 msgid "Vertical Arrangement"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-boxed.php:449
+msgid "Display post meta"
 msgstr ""
 
 #: includes/widgets/widget-magazine-posts-list.php:21
@@ -416,13 +373,18 @@ msgid ""
 "use this widget ONLY in the Magazine Homepage widget area."
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-list.php:305
+#: includes/widgets/widget-magazine-posts-list.php:295
 msgid "Number of posts:"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-list.php:327
-#: includes/widgets/widget-magazine-posts-single.php:319
-msgid "Display post category"
+#: includes/widgets/widget-magazine-posts-list.php:303
+#: includes/widgets/widget-magazine-posts-single.php:295
+msgid "Display post date"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:310
+#: includes/widgets/widget-magazine-posts-single.php:302
+msgid "Display post comments"
 msgstr ""
 
 #: includes/widgets/widget-magazine-posts-single.php:21

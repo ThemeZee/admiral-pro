@@ -68,7 +68,7 @@ class Admiral_Pro {
 		define( 'ADMIRAL_PRO_VERSION', '1.0' );
 
 		// Define Plugin Name
-		define( 'ADMIRAL_PRO_PRODUCT_ID', 58567 );
+		define( 'ADMIRAL_PRO_PRODUCT_ID', 69758 );
 
 		// Define Update API URL
 		define( 'ADMIRAL_PRO_STORE_API_URL', 'https://themezee.com' );

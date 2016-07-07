@@ -61,7 +61,7 @@ class Admiral_Pro_Header_Spacing {
 		}
 
 		// Set Navigation Spacing
-		if ( $theme_options['header_spacing'] <> 30 ) {
+		if ( $theme_options['header_spacing'] <> 25 ) {
 
 			$margin = $theme_options['header_spacing'] / 10;
 
@@ -119,14 +119,14 @@ class Admiral_Pro_Header_Spacing {
 
 		// Add Header Spacing setting
 		$wp_customize->add_setting( 'admiral_theme_options[header_spacing]', array(
-			'default'           => 30,
+			'default'           => 25,
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
 			'sanitize_callback' => 'absint'
 			)
 		);
 		$wp_customize->add_control( 'admiral_theme_options[header_spacing]', array(
-			'label'    => __( 'Header Spacing (default: 30)', 'admiral-pro' ),
+			'label'    => __( 'Header Spacing (default: 25)', 'admiral-pro' ),
 			'section'  => 'admiral_pro_section_header',
 			'settings' => 'admiral_theme_options[header_spacing]',
 			'type'     => 'text',

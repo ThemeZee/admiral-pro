@@ -64,14 +64,23 @@ class Admiral_Pro_Custom_Colors {
 
 		}
 
+		// Set Header Color
+		if ( $theme_options['header_color'] != $default_options['header_color'] ) {
+
+			$color_css .= '
+				/* Navigation Color Setting */
+				.site-header {
+					background: '. $theme_options['header_color'] .';
+				}
+				';
+
+		}
+
 		// Set Primary Content Color
 		if ( $theme_options['content_primary_color'] != $default_options['content_primary_color'] ) {
 
 			$color_css .= '
 				/* Content Primary Color Setting */
-				.site-title,
-				.site-title a:link,
-				.site-title a:visited,
 				.entry-title,
 				.entry-title a:link,
 				.entry-title a:visited,
@@ -87,8 +96,6 @@ class Admiral_Pro_Custom_Colors {
 					color: '. $theme_options['content_primary_color'] .';
 				}
 
-				.site-title a:hover,
-				.site-title a:active,
 				.entry-title a:hover,
 				.entry-title a:active,
 				.widget-title a:hover,
@@ -135,8 +142,6 @@ class Admiral_Pro_Custom_Colors {
 				/* Content Secondary Color Setting */
 				a:link,
 				a:visited,
-				.site-title a:hover,
-				.site-title a:active,
 				.entry-title a:hover,
 				.entry-title a:active,
 				.widget-title a:hover,
@@ -222,12 +227,25 @@ class Admiral_Pro_Custom_Colors {
 
 		}
 
+		// Set Footer Widget Color
+		if ( $theme_options['footer_widgets_color'] != $default_options['footer_widgets_color'] ) {
+
+			$color_css .= '
+
+				/* Footer Widget Color Setting */
+				.footer-widgets-wrap {
+					background: '. $theme_options['footer_widgets_color'] .';
+				}
+				';
+
+		}
+
 		// Set Footer Color
 		if ( $theme_options['footer_color'] != $default_options['footer_color'] ) {
 
 			$color_css .= '
 
-				/* Footer Color Setting */
+				/* Footer Line Color Setting */
 				.footer-wrap {
 					background: '. $theme_options['footer_color'] .';
 				}
@@ -260,7 +278,7 @@ class Admiral_Pro_Custom_Colors {
 		// Get Default Colors from settings
 		$default_options = Admiral_Pro_Customizer::get_default_options();
 
-		// Add Navigation Primary Color setting
+		// Add Navigation Color setting
 		$wp_customize->add_setting( 'admiral_theme_options[navi_color]', array(
 			'default'           => $default_options['navi_color'],
 			'type'           	=> 'option',
@@ -277,6 +295,23 @@ class Admiral_Pro_Custom_Colors {
 			) )
 		);
 
+		// Add Header Color setting
+		$wp_customize->add_setting( 'admiral_theme_options[header_color]', array(
+			'default'           => $default_options['navi_color'],
+			'type'           	=> 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color'
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'admiral_theme_options[header_color]', array(
+				'label'      => _x( 'Header', 'color setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_colors',
+				'settings'   => 'admiral_theme_options[header_color]',
+				'priority' => 2
+			) )
+		);
+
 		// Add Content Primary Color setting
 		$wp_customize->add_setting( 'admiral_theme_options[content_primary_color]', array(
 			'default'           => $default_options['content_primary_color'],
@@ -290,7 +325,7 @@ class Admiral_Pro_Custom_Colors {
 				'label'      => _x( 'Content (primary)', 'color setting', 'admiral-pro' ),
 				'section'    => 'admiral_pro_section_colors',
 				'settings'   => 'admiral_theme_options[content_primary_color]',
-				'priority' => 2
+				'priority' => 3
 			) )
 		);
 
@@ -307,7 +342,7 @@ class Admiral_Pro_Custom_Colors {
 				'label'      => _x( 'Content (secondary)', 'color setting', 'admiral-pro' ),
 				'section'    => 'admiral_pro_section_colors',
 				'settings'   => 'admiral_theme_options[content_secondary_color]',
-				'priority' => 3
+				'priority' => 4
 			) )
 		);
 
@@ -324,7 +359,7 @@ class Admiral_Pro_Custom_Colors {
 				'label'      => _x( 'Main Sidebar Title', 'color setting', 'admiral-pro' ),
 				'section'    => 'admiral_pro_section_colors',
 				'settings'   => 'admiral_theme_options[main_sidebar_color]',
-				'priority' => 4
+				'priority' => 5
 			) )
 		);
 
@@ -341,11 +376,28 @@ class Admiral_Pro_Custom_Colors {
 				'label'      => _x( 'Small Sidebar Title', 'color setting', 'admiral-pro' ),
 				'section'    => 'admiral_pro_section_colors',
 				'settings'   => 'admiral_theme_options[small_sidebar_color]',
-				'priority' => 5
+				'priority' => 6
 			) )
 		);
 
 		// Add Footer Widgets Color setting
+		$wp_customize->add_setting( 'admiral_theme_options[footer_widgets_color]', array(
+			'default'           => $default_options['footer_widgets_color'],
+			'type'           	=> 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color'
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'admiral_theme_options[footer_widgets_color]', array(
+				'label'      => _x( 'Footer Widgets', 'color setting', 'admiral-pro' ),
+				'section'    => 'admiral_pro_section_colors',
+				'settings'   => 'admiral_theme_options[footer_widgets_color]',
+				'priority' => 7
+			) )
+		);
+
+		// Add Footer Line Color setting
 		$wp_customize->add_setting( 'admiral_theme_options[footer_color]', array(
 			'default'           => $default_options['footer_color'],
 			'type'           	=> 'option',
@@ -355,10 +407,10 @@ class Admiral_Pro_Custom_Colors {
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'admiral_theme_options[footer_color]', array(
-				'label'      => _x( 'Footer', 'color setting', 'admiral-pro' ),
+				'label'      => _x( 'Footer Line', 'color setting', 'admiral-pro' ),
 				'section'    => 'admiral_pro_section_colors',
 				'settings'   => 'admiral_theme_options[footer_color]',
-				'priority' => 6
+				'priority' => 7
 			) )
 		);
 

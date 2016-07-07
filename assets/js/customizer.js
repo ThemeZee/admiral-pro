@@ -16,6 +16,14 @@
 		} );
 	} );
 
+	/* Header Color */
+	wp.customize( 'admiral_theme_options[header_color]', function( value ) {
+		value.bind( function( newval ) {
+			$('.site-header')
+				.css('background', newval );
+		} );
+	} );
+
 	/* Main Sidebar Color */
 	wp.customize( 'admiral_theme_options[main_sidebar_color]', function( value ) {
 		value.bind( function( newval ) {
@@ -31,6 +39,14 @@
 			$('.small-sidebar .sidebar-header, .small-sidebar-toggle')
 				.css('background', newval )
 				.css('border-color', newval );
+		} );
+	} );
+
+	/* Footer Widgets Color */
+	wp.customize( 'admiral_theme_options[footer_widgets_color]', function( value ) {
+		value.bind( function( newval ) {
+			$('.footer-widgets-wrap')
+				.css('background', newval );
 		} );
 	} );
 
