@@ -16,11 +16,8 @@ Copyright(C) 2016, ThemeZee.com - support@themezee.com
 
 */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-// Use class to avoid namespace collisions
-if ( ! class_exists( 'Admiral_Pro' ) ) :
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 
 /**
@@ -40,16 +37,16 @@ class Admiral_Pro {
 	 */
 	static function setup() {
 
-		// Setup Constants
+		// Setup Constants.
 		self::constants();
 
-		// Setup Translation
+		// Setup Translation.
 		add_action( 'plugins_loaded', array( __CLASS__, 'translation' ) );
 
-		// Include Files
+		// Include Files.
 		self::includes();
 
-		// Setup Action Hooks
+		// Setup Action Hooks.
 		self::setup_actions();
 
 	}
@@ -61,25 +58,25 @@ class Admiral_Pro {
 	 */
 	static function constants() {
 
-		// Define Plugin Name
+		// Define Plugin Name.
 		define( 'ADMIRAL_PRO_NAME', 'Admiral Pro' );
 
-		// Define Version Number
+		// Define Version Number.
 		define( 'ADMIRAL_PRO_VERSION', '1.0' );
 
-		// Define Plugin Name
+		// Define Plugin Name.
 		define( 'ADMIRAL_PRO_PRODUCT_ID', 69758 );
 
-		// Define Update API URL
+		// Define Update API URL.
 		define( 'ADMIRAL_PRO_STORE_API_URL', 'https://themezee.com' );
 
-		// Plugin Folder Path
+		// Plugin Folder Path.
 		define( 'ADMIRAL_PRO_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
-		// Plugin Folder URL
+		// Plugin Folder URL.
 		define( 'ADMIRAL_PRO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-		// Plugin Root File
+		// Plugin Root File.
 		define( 'ADMIRAL_PRO_PLUGIN_FILE', __FILE__ );
 
 	}
@@ -102,16 +99,16 @@ class Admiral_Pro {
 	 */
 	static function includes() {
 
-		// Include Admin Classes
+		// Include Admin Classes.
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/admin/class-plugin-updater.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/admin/class-settings.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/admin/class-settings-page.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/admin/class-admin-notices.php';
 
-		// Include Customizer Classes
+		// Include Customizer Classes.
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/customizer/class-customizer.php';
 
-		// Include Pro Features
+		// Include Pro Features.
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/modules/class-custom-colors.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/modules/class-custom-fonts.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/modules/class-footer-line.php';
@@ -120,12 +117,12 @@ class Admiral_Pro {
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/modules/class-header-spacing.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/modules/class-header-widgets.php';
 
-		// Include Magazine Widgets
+		// Include Magazine Widgets.
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-boxed.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-list.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-single.php';
 
-		// Include Custom Stylesheet class
+		// Include Custom Stylesheet class.
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/class-custom-stylesheet.php';
 
 	}
@@ -138,16 +135,16 @@ class Admiral_Pro {
 	 */
 	static function setup_actions() {
 
-		// Enqueue Frontend Widget Styles
+		// Enqueue Frontend Widget Styles.
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_styles' ), 11 );
 
-		// Register additional Magazine Post Widgets
+		// Register additional Magazine Post Widgets.
 		add_action( 'widgets_init', array( __CLASS__, 'register_widgets' ) );
 
-		// Add Settings link to Plugin actions
+		// Add Settings link to Plugin actions.
 		add_filter( 'plugin_action_links_' . plugin_basename( ADMIRAL_PRO_PLUGIN_FILE ), array( __CLASS__, 'plugin_action_links' ) );
 
-		// Add automatic plugin updater from ThemeZee Store API
+		// Add automatic plugin updater from ThemeZee Store API.
 		add_action( 'admin_init', array( __CLASS__, 'plugin_updater' ), 0 );
 
 	}
@@ -159,12 +156,12 @@ class Admiral_Pro {
 	 */
 	static function enqueue_styles() {
 
-		// Return early if Admiral Theme is not active
-		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
+		// Return early if Admiral Theme is not active.
+		if ( ! current_theme_supports( 'admiral-pro' ) ) {
 			return;
 		}
 
-		// Enqueue Plugin Stylesheet
+		// Enqueue Plugin Stylesheet.
 		wp_enqueue_style( 'admiral-pro', ADMIRAL_PRO_PLUGIN_URL . 'assets/css/admiral-pro.css', array(), ADMIRAL_PRO_VERSION );
 
 	}
@@ -176,8 +173,8 @@ class Admiral_Pro {
 	 */
 	static function register_widgets() {
 
-		// Return early if Admiral Theme is not active
-		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
+		// Return early if Admiral Theme is not active.
+		if ( ! current_theme_supports( 'admiral-pro' ) ) {
 			return;
 		}
 
@@ -190,6 +187,7 @@ class Admiral_Pro {
 	/**
 	 * Add Settings link to the plugin actions
 	 *
+	 * @param array $actions Plugin action links.
 	 * @return array $actions Plugin action links
 	 */
 	static function plugin_action_links( $actions ) {
@@ -206,33 +204,30 @@ class Admiral_Pro {
 	 */
 	static function plugin_updater() {
 
-		if( ! is_admin() ) :
+		if ( ! is_admin() ) :
 			return;
 		endif;
 
 		$options = Admiral_Pro_Settings::instance();
 
-		if( $options->get( 'license_key' ) <> '' ) :
+		if ( $options->get( 'license_key' ) <> '' ) :
 
 			$license_key = $options->get( 'license_key' );
 
-			// setup the updater
+			// Setup the updater.
 			$admiral_pro_updater = new Admiral_Pro_Plugin_Updater( ADMIRAL_PRO_STORE_API_URL, __FILE__, array(
 					'version' 	=> ADMIRAL_PRO_VERSION,
 					'license' 	=> $license_key,
 					'item_name' => ADMIRAL_PRO_NAME,
 					'item_id'   => ADMIRAL_PRO_PRODUCT_ID,
-					'author' 	=> 'ThemeZee'
+					'author' 	=> 'ThemeZee',
 				)
 			);
 
 		endif;
 
 	}
-
 }
 
-// Run Plugin
+// Run Plugin.
 Admiral_Pro::setup();
-
-endif;
