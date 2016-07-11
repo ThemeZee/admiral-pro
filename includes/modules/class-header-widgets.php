@@ -1,33 +1,33 @@
 <?php
-/***
- * Footer Widgets
+/**
+ * Header Widgets
  *
- * Registers footer widget areas and hooks into the Admiral theme to display widgets
+ * Registers header widget areas and hooks into the Admiral theme to display widgets
  *
  * @package Admiral Pro
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-// Use class to avoid namespace collisions
-if ( ! class_exists( 'Admiral_Pro_Header_Widgets' ) ) :
-
+/**
+ * Header Widgets Class
+ */
 class Admiral_Pro_Header_Widgets {
 
 	/**
 	 * Footer Widgets Setup
 	 *
 	 * @return void
-	*/
+	 */
 	static function setup() {
 
-		// Return early if Admiral Theme is not active
-		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
+		// Return early if Admiral Theme is not active.
+		if ( ! current_theme_supports( 'admiral-pro' ) ) {
 			return;
 		}
 
-		// Display footer widgets
+		// Display footer widgets.
 		add_action( 'admiral_header_widgets', array( __CLASS__, 'display_widgets' ) );
 
 	}
@@ -39,7 +39,7 @@ class Admiral_Pro_Header_Widgets {
 	 */
 	static function display_widgets() {
 
-		// Check if there are footer widgets
+		// Check if there are footer widgets.
 		if ( is_active_sidebar( 'header' ) ) : ?>
 
 			<div class="header-widgets clearfix">
@@ -56,11 +56,11 @@ class Admiral_Pro_Header_Widgets {
 	 * Register all Footer Widget areas
 	 *
 	 * @return void
-	*/
+	 */
 	static function register_widgets() {
 
-		// Return early if Admiral Theme is not active
-		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
+		// Return early if Admiral Theme is not active.
+		if ( ! current_theme_supports( 'admiral-pro' ) ) {
 			return;
 		}
 
@@ -76,13 +76,10 @@ class Admiral_Pro_Header_Widgets {
 		) );
 
 	}
-
 }
 
-// Run Class
+// Run Class.
 add_action( 'init', array( 'Admiral_Pro_Header_Widgets', 'setup' ) );
 
-// Register widgets in backend
+// Register widgets in backend.
 add_action( 'widgets_init', array( 'Admiral_Pro_Header_Widgets', 'register_widgets' ), 20 );
-
-endif;

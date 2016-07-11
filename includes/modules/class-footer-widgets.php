@@ -1,5 +1,5 @@
 <?php
-/***
+/**
  * Footer Widgets
  *
  * Registers footer widget areas and hooks into the Admiral theme to display widgets
@@ -7,27 +7,27 @@
  * @package Admiral Pro
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-// Use class to avoid namespace collisions
-if ( ! class_exists( 'Admiral_Pro_Footer_Widgets' ) ) :
-
+/**
+ * Footer Widgets Class
+ */
 class Admiral_Pro_Footer_Widgets {
 
 	/**
 	 * Footer Widgets Setup
 	 *
 	 * @return void
-	*/
+	 */
 	static function setup() {
 
-		// Return early if Admiral Theme is not active
-		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
+		// Return early if Admiral Theme is not active.
+		if ( ! current_theme_supports( 'admiral-pro' ) ) {
 			return;
 		}
 
-		// Display widgets
+		// Display widgets.
 		add_action( 'admiral_before_footer', array( __CLASS__, 'display_widgets' ) );
 
 	}
@@ -39,8 +39,8 @@ class Admiral_Pro_Footer_Widgets {
 	 */
 	static function display_widgets() {
 
-		// Check if there are footer widgets
-		if( is_active_sidebar( 'footer' ) ) : ?>
+		// Check if there are footer widgets.
+		if ( is_active_sidebar( 'footer' ) ) : ?>
 
 			<div id="footer-widgets-wrap" class="footer-widgets-wrap">
 
@@ -64,15 +64,15 @@ class Admiral_Pro_Footer_Widgets {
 	 * Register all Footer Widget areas
 	 *
 	 * @return void
-	*/
+	 */
 	static function register_widgets() {
 
-		// Return early if Admiral Theme is not active
-		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
+		// Return early if Admiral Theme is not active.
+		if ( ! current_theme_supports( 'admiral-pro' ) ) {
 			return;
 		}
 
-		// Register Footer widget area
+		// Register Footer widget area.
 		register_sidebar( array(
 			'name' => esc_html__( 'Footer', 'admiral-pro' ),
 			'id' => 'footer',
@@ -84,13 +84,10 @@ class Admiral_Pro_Footer_Widgets {
 		) );
 
 	}
-
 }
 
-// Run Class
+// Run Class.
 add_action( 'init', array( 'Admiral_Pro_Footer_Widgets', 'setup' ) );
 
-// Register widgets in backend
+// Register widgets in backend.
 add_action( 'widgets_init', array( 'Admiral_Pro_Footer_Widgets', 'register_widgets' ), 30 );
-
-endif;

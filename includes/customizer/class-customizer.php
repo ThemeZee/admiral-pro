@@ -1,5 +1,5 @@
 <?php
-/***
+/**
  * Customizer
  *
  * Setup the Customizer and theme options for the Pro plugin
@@ -7,32 +7,31 @@
  * @package Admiral Pro
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-
-// Use class to avoid namespace collisions
-if ( ! class_exists( 'Admiral_Pro_Customizer' ) ) :
-
+/**
+ * Customizer Class
+ */
 class Admiral_Pro_Customizer {
 
 	/**
 	 * Customizer Setup
 	 *
 	 * @return void
-	*/
+	 */
 	static function setup() {
 
-		// Return early if Admiral Theme is not active
-		if ( ! current_theme_supports( 'admiral-pro'  ) ) {
+		// Return early if Admiral Theme is not active.
+		if ( ! current_theme_supports( 'admiral-pro' ) ) {
 			return;
 		}
 
-		// Enqueue scripts and styles in the Customizer
+		// Enqueue scripts and styles in the Customizer.
 		add_action( 'customize_preview_init', array( __CLASS__, 'customize_preview_js' ) );
 		add_action( 'customize_controls_print_styles', array( __CLASS__, 'customize_preview_css' ) );
 
-		// Remove Upgrade section
+		// Remove Upgrade section.
 		remove_action( 'customize_register', 'admiral_customize_register_upgrade_settings' );
 	}
 
@@ -43,20 +42,11 @@ class Admiral_Pro_Customizer {
 	 */
 	static function get_theme_options() {
 
-		// Merge Theme Options Array from Database with Default Options Array
-		$theme_options = wp_parse_args(
+		// Merge Theme Options Array from Database with Default Options array.
+		$theme_options = wp_parse_args( get_option( 'admiral_theme_options', array() ), self::get_default_options() );
 
-			// Get saved theme options from WP database
-			get_option( 'admiral_theme_options', array() ),
-
-			// Merge with Default Options if setting was not saved yet
-			self::get_default_options()
-
-		);
-
-		// Return theme options
+		// Return theme options.
 		return $theme_options;
-
 	}
 
 
@@ -84,11 +74,10 @@ class Admiral_Pro_Customizer {
 			'title_font' 						=> 'Montserrat',
 			'navi_font' 						=> 'Montserrat',
 			'widget_title_font' 				=> 'Montserrat',
-			'available_fonts'					=> 'favorites'
+			'available_fonts'					=> 'favorites',
 		);
 
 		return $default_options;
-
 	}
 
 	/**
@@ -112,10 +101,7 @@ class Admiral_Pro_Customizer {
 		wp_enqueue_style( 'admiral-pro-customizer-css', ADMIRAL_PRO_PLUGIN_URL . 'assets/css/customizer.css', array(), ADMIRAL_PRO_VERSION );
 
 	}
-
 }
 
-// Run Class
+// Run Class.
 add_action( 'init', array( 'Admiral_Pro_Customizer', 'setup' ) );
-
-endif;
