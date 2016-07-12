@@ -122,9 +122,6 @@ class Admiral_Pro {
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-list.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-single.php';
 
-		// Include Custom Stylesheet class.
-		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/class-custom-stylesheet.php';
-
 	}
 
 	/**
@@ -164,6 +161,17 @@ class Admiral_Pro {
 		// Enqueue Plugin Stylesheet.
 		wp_enqueue_style( 'admiral-pro', ADMIRAL_PRO_PLUGIN_URL . 'assets/css/admiral-pro.css', array(), ADMIRAL_PRO_VERSION );
 
+		// Get Custom CSS.
+		$custom_css = apply_filters( 'admiral_pro_custom_css_stylesheet', '' );
+
+		// Sanitize Custom CSS.
+		$custom_css = wp_kses( $custom_css, array( '\'', '\"' ) );
+		$custom_css = str_replace( '&gt;', '>', $custom_css );
+		$custom_css = preg_replace( '/\n/', '', $custom_css );
+		$custom_css = preg_replace( '/\t/', '', $custom_css );
+
+		// Add Custom CSS.
+		wp_add_inline_style( 'admiral-pro', $custom_css );
 	}
 
 	/**

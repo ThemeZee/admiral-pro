@@ -66,7 +66,7 @@ class Admiral_Pro_Custom_Colors {
 		if ( $theme_options['header_color'] != $default_options['header_color'] ) {
 
 			$custom_css .= '
-				/* Navigation Color Setting */
+				/* Header Color Setting */
 				.site-header {
 					background: '. $theme_options['header_color'] .';
 				}

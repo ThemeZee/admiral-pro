@@ -51,9 +51,10 @@ class Admiral_Pro_Header_Spacing {
 			$margin = $theme_options['logo_spacing'] / 10;
 
 			$custom_css .= '
-			.site-branding {
-				margin: '. $margin .'em 0;
-			}
+				/* Logo Spacing Setting */
+				.site-branding {
+					margin: '. $margin .'em 0;
+				}
 			';
 
 		}
@@ -64,14 +65,15 @@ class Admiral_Pro_Header_Spacing {
 			$margin = $theme_options['header_spacing'] / 10;
 
 			$custom_css .= '
-			@media only screen and (min-width: 60em) {
+				/* Header Spacing Setting */
+				@media only screen and (min-width: 60em) {
 
-				.header-main {
-					padding-top: '. $margin .'em;
-					padding-bottom: '. $margin .'em;
+					.header-main {
+						padding-top: '. $margin .'em;
+						padding-bottom: '. $margin .'em;
+					}
+
 				}
-
-			}
 			';
 
 		}
