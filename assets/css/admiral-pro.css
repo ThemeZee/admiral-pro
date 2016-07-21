@@ -107,8 +107,6 @@
 	min-width: 250px;
 	min-width: 16rem;
 	padding: 0.8em 1em;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	border-bottom: 1px solid #eee;
 }
@@ -238,7 +236,10 @@
 }
 
 .footer-widgets-columns {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	margin-right: -2em;
 }
