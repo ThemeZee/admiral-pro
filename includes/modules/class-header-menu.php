@@ -42,9 +42,9 @@ class Admiral_Pro_Header_Menu {
 		// Check if there is a header menu.
 		if ( has_nav_menu( 'header' ) ) : ?>
 
-			<div id="header-navigation-wrap" class="header-navigation-wrap container clearfix">
+			<div id="header-navigation-wrap" class="header-navigation-wrap clearfix">
 
-				<nav id="header-navigation" class="header-navigation navigation clearfix" role="navigation">
+				<nav id="header-navigation" class="header-navigation navigation container clearfix" role="navigation">
 
 					<?php // Display Top Navigation.
 					wp_nav_menu( array(

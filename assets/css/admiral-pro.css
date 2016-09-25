@@ -36,8 +36,13 @@
 	display: none;
 }
 
+.header-navigation-wrap {
+	background: rgba(0,0,0,0.1);
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
 .header-navigation {
-	border-top: 1px solid rgba(255,255,255,0.2);
+/*	border-top: 1px solid rgba(255,255,255,0.2); */
 }
 
 .header-navigation-menu {
@@ -58,7 +63,7 @@
 	display: block;
 	font-size: 14px;
 	font-size: 0.875rem;
-	padding: 1em 1.5em;
+	padding: 0.8em 1.5em;
 	text-decoration: none;
 }
 
@@ -111,7 +116,7 @@
 	border-bottom: 1px solid #eee;
 }
 
-.header-navigation-menu ul li:last-child a {
+.header-navigation-menu ul li:last-child > a {
 	border-bottom: none;
 }
 
@@ -229,7 +234,6 @@
 # Footer Widgets
 --------------------------------------------------------------*/
 .footer-widgets-wrap {
-	margin-top: 3em;
 	background: #404040;
 	padding-top: 3em;
 	border-bottom: 1px solid rgba(255,255,255,0.2);
@@ -468,7 +472,7 @@
 		border-bottom: 1px solid rgba(255,255,255,0.1);
 	}
 
-	.header-navigation-menu li:last-child a {
+	.header-navigation-menu li:last-child > a {
 		border-bottom: none;
 	}
 
@@ -500,7 +504,7 @@
 		float: right;
 		display: block;
 		margin: 0;
-		padding: 0.75em 1em;
+		padding: 0.6em 1em;
 		background: none;
 	}
 
@@ -529,7 +533,7 @@
 	}
 
 	.header-navigation-menu ul .submenu-dropdown-toggle {
-		padding: 0.6em 1em;
+		padding: 0.55em 1em;
 	}
 
 
