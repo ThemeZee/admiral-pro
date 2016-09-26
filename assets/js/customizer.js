@@ -8,19 +8,27 @@
 
 ( function( $ ) {
 
-	/* Navi Color */
-	wp.customize( 'admiral_theme_options[navi_color]', function( value ) {
-		value.bind( function( newval ) {
-			$( '.header-bar-wrap, .main-navigation-menu ul' )
-				.css( 'background', newval );
-		} );
-	} );
-
 	/* Header Color */
 	wp.customize( 'admiral_theme_options[header_color]', function( value ) {
 		value.bind( function( newval ) {
 			$( '.site-header' )
 				.css( 'background', newval );
+		} );
+	} );
+
+	/* Navi Color */
+	wp.customize( 'admiral_theme_options[navi_color]', function( value ) {
+		value.bind( function( newval ) {
+			$( '.main-navigation-wrap, .main-navigation-menu ul' )
+				.css( 'background', newval );
+		} );
+	} );
+
+	/* Header Line Color */
+	wp.customize( 'admiral_theme_options[header_line_color]', function( value ) {
+		value.bind( function( newval ) {
+			$( '.site-header' ).css( 'border-bottom', '10px solid ' + newval );
+			$( '.main-navigation-menu ul' ).css( 'border-top', '10px solid ' + newval );
 		} );
 	} );
 
