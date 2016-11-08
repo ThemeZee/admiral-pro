@@ -37,8 +37,8 @@
 }
 
 .header-navigation-wrap {
-	background: rgba(0,0,0,0.1);
 	border-bottom: 1px solid rgba(255,255,255,0.1);
+	background: rgba(0,0,0,0.1);
 }
 
 .header-navigation {
@@ -46,13 +46,13 @@
 }
 
 .header-navigation-menu {
+	position: relative;
 	float: left;
-	width: 100%;
 	margin: 0;
 	padding: 0;
-	list-style-type: none;
+	width: 100%;
 	list-style-position: outside;
-	position: relative;
+	list-style-type: none;
 }
 
 .header-navigation-menu li {
@@ -61,24 +61,24 @@
 
 .header-navigation-menu a {
 	display: block;
-	font-size: 14px;
-	font-size: 0.875rem;
 	padding: 0.8em 1.5em;
 	text-decoration: none;
+	font-size: 14px;
+	font-size: 0.875rem;
 }
 
 .header-navigation-menu > .menu-item-has-children > a:after {
 	display: inline-block;
 	margin: 0.5em 0 0 0.4em;
+	color: #fff;
+	content: '\f431';
+	vertical-align: top;
+	text-decoration: inherit;
 	font-size: 14px;
-	line-height: 1;
 	font-family: 'Genericons';
+	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	text-decoration: inherit;
-	vertical-align: top;
-	content: '\f431';
-	color: #fff;
 }
 
 .header-navigation-menu a:link,
@@ -93,26 +93,26 @@
 
 .header-navigation-menu ul {
 	position: absolute;
-	display: none;
 	z-index: 9999;
+	display: none;
 	margin: 0;
 	padding: 0;
-	list-style-type: none;
-	list-style-position: outside;
 	background: #fff;
 	box-shadow: 0 2px 2px #ccc;
+	list-style-position: outside;
+	list-style-type: none;
 }
 
 .header-navigation-menu ul li{
-	float: none;
 	position: relative;
+	float: none;
 }
 
 .header-navigation-menu ul a {
+	box-sizing: border-box;
+	padding: 0.8em 1em;
 	min-width: 250px;
 	min-width: 16rem;
-	padding: 0.8em 1em;
-	box-sizing: border-box;
 	border-bottom: 1px solid #eee;
 }
 
@@ -133,19 +133,19 @@
 .header-navigation-menu ul .menu-item-has-children > a:after {
 	display: inline-block;
 	margin: 0.5em 0 0 0.2em;
-	font-size: 14px;
-	line-height: 1;
-	font-family: 'Genericons';
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-decoration: inherit;
-	vertical-align: top;
-	content: '\f431';
 	color: #777;
+	content: '\f431';
+	vertical-align: top;
+	text-decoration: inherit;
+	font-size: 14px;
+	font-family: 'Genericons';
+	line-height: 1;
 	-webkit-transform:rotate(270deg);
 	-moz-transform:rotate(270deg);
 	-o-transform:rotate(270deg);
 	-ms-transform:rotate(270deg);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .header-navigation-menu li ul ul {
@@ -180,17 +180,17 @@
 /* Magazine Posts Boxed Widget Horizontal Style */
 .widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .wp-post-image {
 	float: left;
-	width: 50%;
+	box-sizing: border-box;
 	margin: 0;
 	padding-right: 1em;
-	box-sizing: border-box;
+	width: 50%;
 }
 
 .widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .post-content {
 	float: right;
-	width: 50%;
-	padding-left: 1em;
 	box-sizing: border-box;
+	padding-left: 1em;
+	width: 50%;
 }
 
 .widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .medium-posts {
@@ -200,17 +200,17 @@
 /* Magazine Posts Boxed Widget Vertical Style */
 .widget-magazine-posts-boxed .magazine-posts-boxed-vertical .large-post {
 	float: left;
-	width: 50%;
+	box-sizing: border-box;
 	margin-bottom: 1em;
 	padding-right: 1em;
-	box-sizing: border-box;
+	width: 50%;
 }
 
 .widget-magazine-posts-boxed .magazine-posts-boxed-vertical .small-posts {
-	width: 50%;
+	box-sizing: border-box;
 	margin-left: 50%;
 	padding-left: 1em;
-	box-sizing: border-box;
+	width: 50%;
 }
 
 /* Magazine Posts List Widget */
@@ -220,9 +220,9 @@
 
 .widget-magazine-posts-list .type-post .wp-post-image {
 	float: left;
-	max-width: 45%;
 	margin: 0 2em 1em 0;
 	padding: 0;
+	max-width: 45%;
 }
 
 .widget-magazine-posts-list .type-post .entry-title {
@@ -234,9 +234,9 @@
 # Footer Widgets
 --------------------------------------------------------------*/
 .footer-widgets-wrap {
-	background: #404040;
 	padding-top: 3em;
 	border-bottom: 1px solid rgba(255,255,255,0.2);
+	background: #404040;
 }
 
 .footer-widgets-columns {
@@ -249,23 +249,23 @@
 }
 
 .footer-widget-column {
-	width: 25%;
-	padding-right: 2em;
 	box-sizing: border-box;
+	padding-right: 2em;
+	width: 25%;
 }
 
 .footer-widget-column .widget {
-	width: 100%;
 	margin: 0 0 3em;
 	padding: 0;
+	width: 100%;
 }
 
 /* Footer Widget Styling */
 .footer-widgets .widget {
-	color: #ccc;
-	background: none;
 	border: none;
+	background: none;
 	box-shadow: none;
+	color: #ccc;
 }
 
 .footer-widgets .widget-title {
@@ -292,18 +292,18 @@
 
 .footer-navigation {
 	float: right;
-	width: 50%;
 	padding: 0.5em 0;
+	width: 50%;
 }
 
 .footer-navigation-menu {
-	float: right;
+	position: relative;
 	display: inline;
+	float: right;
 	margin: 0;
 	padding: 0;
-	list-style-type: none;
 	list-style-position: outside;
-	position: relative;
+	list-style-type: none;
 }
 
 .footer-navigation-menu li {
@@ -340,13 +340,13 @@
 }
 
 .site-footer .social-icons-menu li a:before {
-	font-size: 18px;
 	text-decoration: none;
+	font-size: 18px;
 }
 
 .site-footer .social-icons-menu li a:hover:before {
-	text-decoration: none;
 	color: rgba(255,255,255,0.6);
+	text-decoration: none;
 }
 
 /*--------------------------------------------------------------
@@ -357,7 +357,6 @@
 ## Desktop X-Large ( < 1200px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 90em) {
-
 	.footer-widgets-wrap {
 		margin-top: 2em;
 		padding-top: 2em;
@@ -373,7 +372,6 @@
 ## Desktop Medium ( < 1040px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 65em) {
-
 	/* Magazine Post Widgets */
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .entry-content {
 		display: none;
@@ -385,7 +383,6 @@
 ## Desktop Small ( < 960px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 60em) {
-
 	/* Header Widgets */
 	.header-widgets {
 		display: block;
@@ -393,11 +390,11 @@
 	}
 
 	.header-widget {
-		float: none;
 		display: inline-block;
+		float: none;
 		margin: 1em 0 0;
-		vertical-align: top;
 		max-width: 100%;
+		vertical-align: top;
 	}
 
 	.header-widget .search-form {
@@ -422,8 +419,8 @@
 	}
 
 	.header-navigation-menu li {
-		float: none;
 		position: static;
+		float: none;
 	}
 
 	.header-navigation-menu ul {
@@ -432,8 +429,8 @@
 	}
 
 	.header-navigation-menu ul a {
-		width: auto;
 		float: none;
+		width: auto;
 	}
 
 	.header-navigation-menu li ul ul {
@@ -483,8 +480,8 @@
 
 	.header-navigation-menu ul a {
 		display: block;
-		width: 100%;
 		padding-left: 3em;
+		width: 100%;
 	}
 
 	.header-navigation-menu ul ul a {
@@ -501,8 +498,8 @@
 
 	/* Mobile Submenu Dropdowns */
 	.header-navigation-menu .submenu-dropdown-toggle {
-		float: right;
 		display: block;
+		float: right;
 		margin: 0;
 		padding: 0.6em 1em;
 		background: none;
@@ -513,15 +510,15 @@
 	}
 
 	.header-navigation-menu .submenu-dropdown-toggle:before {
+		color: #fff;
+		content: '\f431';
+		vertical-align: middle;
+		text-decoration: inherit;
 		font-size: 24px;
-		line-height: 1;
 		font-family: 'Genericons';
+		line-height: 1;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		text-decoration: inherit;
-		vertical-align: middle;
-		content: '\f431';
-		color: #fff;
 	}
 
 	.header-navigation-menu .submenu-dropdown-toggle:hover:before {
@@ -571,7 +568,6 @@
 ## Tablet Medium ( < 800px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 50em) {
-
 	.footer-widgets-wrap {
 		margin-top: 0;
 		border-top: 2px solid #e5e5e5;
@@ -583,7 +579,6 @@
 ## Tablet Small ( < 720px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 45em) {
-
 	/* Magazine Post Widgets */
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .entry-content {
 		display: none;
@@ -599,7 +594,6 @@
 ## Mobile Extra Large ( < 640px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 40em) {
-
 	/* Magazine Posts Widgets */
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .medium-posts {
 		margin-right: 0;
@@ -609,15 +603,15 @@
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .post-content,
 	.widget-magazine-posts-boxed .magazine-posts-boxed-vertical .large-post {
 		float: none;
-		width: 100%;
 		padding: 0;
+		width: 100%;
 	}
 
 	.widget-magazine-posts-boxed .magazine-posts-boxed-vertical .small-posts {
-		width: 100%;
-		padding-top: 1em;
 		margin-left: 0;
+		padding-top: 1em;
 		padding-left: 0;
+		width: 100%;
 	}
 
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .entry-content {
@@ -653,7 +647,6 @@
 ## Mobile Large ( < 560px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 35em) {
-
 	/* Magazine Homepage: Category Post Widgets */
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .medium-posts {
 		margin-right: 0;
@@ -665,12 +658,11 @@
 ## Mobile Medium ( < 480px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 30em) {
-
 	/* Magazine Homepage: Category Post Widgets */
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .post-content {
 		float: none;
-		width: 100%;
 		padding: 0;
+		width: 100%;
 	}
 
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .entry-content {
@@ -692,7 +684,6 @@
 ## Mobile Small ( < 320px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 20em) {
-
 	.widget-magazine-posts-list .type-post .entry-title {
 		font-size: 15px;
 		font-size: 0.9375rem;
@@ -706,7 +697,6 @@
 
 /* Ensure top navigation is visible on desktop view */
 @media only screen and (min-width: 60.001em) {
-
 	.header-navigation-menu {
 		display: block !important;
 	}
