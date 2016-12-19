@@ -2,26 +2,31 @@
 Admiral Pro Changelog
 ===================================
 
+Version 1.0.5
+-----------------------------------
+* changed Google Font URL to https in Customizer
+* updated custom color settings for pagination
+
 Version 1.0.4
 -----------------------------------
-[added] RTL language support for all Pro features
-[added] 18 new Google Fonts to font settings
+* added RTL language support for all Pro features
+* added 18 new Google Fonts to font settings
 
 Version 1.0.3
 -----------------------------------
-[updated] custom color settings for header design update
-[updated] header spacing setting and header navigation styling
+* updated custom color settings for header design update
+* updated header spacing setting and header navigation styling
 
 Version 1.0.2
 -----------------------------------
-[added] custom styling for mega menu plugin
-[improved] browser prefixing of CSS stylesheets
+* added custom styling for mega menu plugin
+* improved browser prefixing of CSS stylesheets
 
 Version 1.0.1
 -----------------------------------
-[added] loading of custom colors and custom fonts CSS with wp_add_inline_style()
-[updated] plugin uploader class
-[improved] code formatting
+* added loading of custom colors and custom fonts CSS with wp_add_inline_style()
+* updated plugin uploader class
+* improved code formatting
 
 Version 1.0
 -----------------------------------
