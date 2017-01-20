@@ -224,7 +224,7 @@ class Admiral_Pro {
 
 		if ( $options->get( 'license_key' ) <> '' ) :
 
-			$license_key = $options->get( 'license_key' );
+			$license_key = trim( $options->get( 'license_key' ) );
 
 			// Setup the updater.
 			$admiral_pro_updater = new Admiral_Pro_Plugin_Updater( ADMIRAL_PRO_STORE_API_URL, __FILE__, array(
