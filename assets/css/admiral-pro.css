@@ -285,21 +285,12 @@
 /*--------------------------------------------------------------
 # Footer Navigation
 --------------------------------------------------------------*/
-.site-footer .site-info {
-	float: left;
-	width: 50%;
-}
-
 .footer-navigation {
 	float: right;
-	padding: 0.5em 0;
-	width: 50%;
+	padding: 0.5em;
 }
 
 .footer-navigation-menu {
-	position: relative;
-	display: inline;
-	float: right;
 	margin: 0;
 	padding: 0;
 	list-style-position: outside;
@@ -307,13 +298,12 @@
 }
 
 .footer-navigation-menu li {
-	display: inline-block;
-	margin-left: 1.5em;
+	float: left;
 }
 
 .footer-navigation-menu li a {
-	display: inline-block;
-	padding: 0.5em 0;
+	display: block;
+	padding: 0.5em 0.75em;
 	text-decoration: none;
 }
 
@@ -328,45 +318,8 @@
 }
 
 /*--------------------------------------------------------------
-# Footer Social Menu
---------------------------------------------------------------*/
-.site-footer .social-icons-navigation {
-	float: right;
-	margin: 0.25em 1em 0;
-}
-
-.site-footer .social-icons-menu li a {
-	padding: 1em;
-}
-
-.site-footer .social-icons-menu li a:before {
-	text-decoration: none;
-	font-size: 18px;
-}
-
-.site-footer .social-icons-menu li a:hover:before {
-	color: rgba(255,255,255,0.6);
-	text-decoration: none;
-}
-
-/*--------------------------------------------------------------
 # Media Queries
 --------------------------------------------------------------*/
-
-/*--------------------------------------------------------------
-## Desktop X-Large ( < 1200px )
---------------------------------------------------------------*/
-@media only screen and (max-width: 90em) {
-	.footer-widgets-wrap {
-		margin-top: 2em;
-		padding-top: 2em;
-	}
-
-	.footer-widget-column .widget {
-		margin: 0 0 2em;
-	}
-
-}
 
 /*--------------------------------------------------------------
 ## Desktop Medium ( < 1040px )
@@ -542,26 +495,17 @@
 		color: #303030;
 	}
 
-	/* Footer Line */
-	.site-footer .site-info,
+	/* Footer Navigation */
 	.footer-navigation {
 		float: none;
-		width: 100%;
-	}
-
-	.footer-navigation {
-		margin-top: 0;
-		padding: 0 0 1em;
-	}
-
-	.footer-navigation-menu {
-		float: none;
+		text-align: center;
+		padding-bottom: 0;
 	}
 
 	.footer-navigation-menu li {
-		margin: 0 1.5em 0 0;
+		float: none;
+		display: inline-block;
 	}
-
 }
 
 /*--------------------------------------------------------------
@@ -641,6 +585,15 @@
 		width: 100%;
 	}
 
+	/* Footer Navigation Menu */
+	.footer-navigation {
+		padding: 1em 0;
+	}
+
+	.footer-navigation-menu li,
+	.footer-navigation-menu a {
+		display: block;
+	}
 }
 
 /*--------------------------------------------------------------
