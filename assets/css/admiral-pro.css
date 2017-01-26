@@ -1,7 +1,7 @@
 /*
  * Admiral Pro CSS
  *
- * Copyright(C) 2015, ThemeZee.com - support@themezee.com
+ * Copyright(C) 2017, ThemeZee.com - support@themezee.com
  * License: GPL v3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
@@ -233,38 +233,51 @@
 /*--------------------------------------------------------------
 # Footer Widgets
 --------------------------------------------------------------*/
-.footer-widgets-wrap {
-	padding-top: 3em;
-	border-bottom: 1px solid rgba(255,255,255,0.2);
+.footer-widgets-background {
+	padding: 1.5em 0 0;
+	border-bottom: 1px solid rgba(255,255,255,0.1);
 	background: #404040;
 }
 
-.footer-widgets-columns {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	margin-right: -2em;
+.footer-widgets {
+	margin-right: -1em;
 }
 
+.footer-widgets .widget {
+	margin: 0 0 2em;
+}
+
+/* Default: Four Column Footer Widgets */
 .footer-widget-column {
+	float: left;
 	box-sizing: border-box;
-	padding-right: 2em;
+	padding-right: 1em;
 	width: 25%;
 }
 
-.footer-widget-column .widget {
-	margin: 0 0 3em;
-	padding: 0;
+/* One Column Footer Widgets
+* Using Sibling Count: http://andr3.net/blog/post/142
+*/
+.footer-widget-column:nth-child(1):nth-last-child(1) {
+	float: none;
 	width: 100%;
+}
+
+/* Two Column Footer Widgets */
+.footer-widget-column:nth-child(1):nth-last-child(2),
+.footer-widget-column:nth-child(2):nth-last-child(1) {
+	width: 50%;
+}
+
+/* Three Column Footer Widgets */
+.footer-widget-column:nth-child(1):nth-last-child(3),
+.footer-widget-column:nth-child(2):nth-last-child(2),
+.footer-widget-column:nth-child(3):nth-last-child(1) {
+	width: 33.3333%;
 }
 
 /* Footer Widget Styling */
 .footer-widgets .widget {
-	border: none;
-	background: none;
-	box-shadow: none;
 	color: #ccc;
 }
 
@@ -274,12 +287,12 @@
 
 .footer-widgets .widget a:link,
 .footer-widgets .widget a:visited  {
-	color: #fff;
+	color: rgba(255,255,255,0.75);
 }
 
 .footer-widgets .widget a:hover,
 .footer-widgets .widget a:active  {
-	color: rgba(255,255,255,0.6);
+	color: rgba(255,255,255,0.5);
 }
 
 /*--------------------------------------------------------------
@@ -322,6 +335,15 @@
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
+## Desktop Large
+--------------------------------------------------------------*/
+@media only screen and (max-width: 95em) {
+	.footer-widgets-background {
+		padding: 1.25em 1em 0;
+	}
+}
+
+/*--------------------------------------------------------------
 ## Desktop Medium ( < 1040px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 65em) {
@@ -330,6 +352,17 @@
 		display: none;
 	}
 
+	/* Four Column Footer Widgets */
+	.footer-widget-column:nth-child(1):nth-last-child(4),
+	.footer-widget-column:nth-child(2):nth-last-child(3),
+	.footer-widget-column:nth-child(3):nth-last-child(2),
+	.footer-widget-column:nth-child(4):nth-last-child(1) {
+		width: 50%;
+	}
+
+	.footer-widget-column:nth-child(3):nth-last-child(2) {
+		clear: left;
+	}
 }
 
 /*--------------------------------------------------------------
@@ -357,11 +390,6 @@
 	/* Magazine Post Widgets */
 	.widget-magazine-posts-boxed .magazine-posts-boxed-horizontal .large-post .entry-content {
 		display: inline-block;
-	}
-
-	/* Footer Widgets */
-	.footer-widget-column {
-		width: 50%;
 	}
 
 	/*** Mobile Top Navigation ***/
@@ -512,11 +540,12 @@
 ## Tablet Medium ( < 800px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 50em) {
-	.footer-widgets-wrap {
-		margin-top: 0;
-		border-top: 2px solid #e5e5e5;
+	/* Three Column Footer Widgets */
+	.footer-widget-column:nth-child(1):nth-last-child(3),
+	.footer-widget-column:nth-child(2):nth-last-child(2),
+	.footer-widget-column:nth-child(3):nth-last-child(1) {
+		width: 100%;
 	}
-
 }
 
 /*--------------------------------------------------------------
@@ -575,16 +604,6 @@
 		font-size: 1.125rem;
 	}
 
-	/* Footer Widgets */
-	.footer-widgets {
-		margin-right: 0;
-	}
-
-	.footer-widget-column {
-		display: block;
-		width: 100%;
-	}
-
 	/* Footer Navigation Menu */
 	.footer-navigation {
 		padding: 1em 0;
@@ -605,6 +624,24 @@
 		margin-right: 0;
 	}
 
+	/* Footer Widgets */
+	.footer-widgets-background {
+		padding: 0.75em 0 0;
+	}
+
+	.footer-widgets {
+		margin-right: 0;
+	}
+
+	.footer-widgets .widget {
+		margin: 0 0 1em;
+	}
+
+	#footer-widgets .footer-widget-column {
+		float: none;
+		padding-right: 0;
+		width: 100%;
+	}
 }
 
 /*--------------------------------------------------------------

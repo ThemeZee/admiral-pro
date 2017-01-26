@@ -40,15 +40,48 @@ class Admiral_Pro_Footer_Widgets {
 	static function display_widgets() {
 
 		// Check if there are footer widgets.
-		if ( is_active_sidebar( 'footer' ) ) : ?>
+		if ( is_active_sidebar( 'footer-column-1' )
+			or is_active_sidebar( 'footer-column-2' )
+			or is_active_sidebar( 'footer-column-3' )
+			or is_active_sidebar( 'footer-column-4' ) ) : ?>
 
-			<div id="footer-widgets-wrap" class="footer-widgets-wrap">
+			<div id="footer-widgets-bg" class="footer-widgets-background">
 
-				<div id="footer-widgets" class="footer-widgets container">
+				<div id="footer-widgets-wrap" class="footer-widgets-wrap container">
 
-					<div id="footer-widgets-columns" class="footer-widgets-columns clearfix"  role="complementary">
+					<div id="footer-widgets" class="footer-widgets clearfix"  role="complementary">
 
-						<?php dynamic_sidebar( 'footer' ); ?>
+						<?php if ( is_active_sidebar( 'footer-column-1' ) ) : ?>
+
+							<div class="footer-widget-column widget-area">
+								<?php dynamic_sidebar( 'footer-column-1' ); ?>
+							</div>
+
+						<?php endif; ?>
+
+						<?php if ( is_active_sidebar( 'footer-column-2' ) ) : ?>
+
+							<div class="footer-widget-column widget-area">
+								<?php dynamic_sidebar( 'footer-column-2' ); ?>
+							</div>
+
+						<?php endif; ?>
+
+						<?php if ( is_active_sidebar( 'footer-column-3' ) ) : ?>
+
+							<div class="footer-widget-column widget-area">
+								<?php dynamic_sidebar( 'footer-column-3' ); ?>
+							</div>
+
+						<?php endif; ?>
+
+						<?php if ( is_active_sidebar( 'footer-column-4' ) ) : ?>
+
+							<div class="footer-widget-column widget-area">
+								<?php dynamic_sidebar( 'footer-column-4' ); ?>
+							</div>
+
+						<?php endif; ?>
 
 					</div>
 
@@ -56,8 +89,8 @@ class Admiral_Pro_Footer_Widgets {
 
 			</div>
 
-		<?php endif;
-
+		<?php
+		endif;
 	}
 
 	/**
@@ -72,17 +105,49 @@ class Admiral_Pro_Footer_Widgets {
 			return;
 		}
 
-		// Register Footer widget area.
+		// Register Footer Column 1 widget area.
 		register_sidebar( array(
-			'name' => esc_html__( 'Footer', 'admiral-pro' ),
-			'id' => 'footer',
-			'description' => esc_html__( 'Appears on the footer area.', 'admiral-pro' ),
-			'before_widget' => '<div class="footer-widget-column"><aside id="%1$s" class="widget %2$s clearfix">',
-			'after_widget' => '</aside></div>',
+			'name' => __( 'Footer Column 1', 'admiral-pro' ),
+			'id' => 'footer-column-1',
+			'description' => __( 'Appears on the first footer column.', 'admiral-pro' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix">',
+			'after_widget' => '</aside>',
 			'before_title' => '<div class="widget-header"><h3 class="widget-title">',
 			'after_title' => '</h3></div>',
 		) );
 
+		// Register Footer Column 2 widget area.
+		register_sidebar( array(
+			'name' => __( 'Footer Column 2', 'admiral-pro' ),
+			'id' => 'footer-column-2',
+			'description' => __( 'Appears on the second footer column.', 'admiral-pro' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix">',
+			'after_widget' => '</aside>',
+			'before_title' => '<div class="widget-header"><h3 class="widget-title">',
+			'after_title' => '</h3></div>',
+		) );
+
+		// Register Footer Column 3 widget area.
+		register_sidebar( array(
+			'name' => __( 'Footer Column 3', 'admiral-pro' ),
+			'id' => 'footer-column-3',
+			'description' => __( 'Appears on the third footer column.', 'admiral-pro' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix">',
+			'after_widget' => '</aside>',
+			'before_title' => '<div class="widget-header"><h3 class="widget-title">',
+			'after_title' => '</h3></div>',
+		) );
+
+		// Register Footer Column 4 widget area.
+		register_sidebar( array(
+			'name' => __( 'Footer Column 4', 'admiral-pro' ),
+			'id' => 'footer-column-4',
+			'description' => __( 'Appears on the fourth footer column.', 'admiral-pro' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix">',
+			'after_widget' => '</aside>',
+			'before_title' => '<div class="widget-header"><h3 class="widget-title">',
+			'after_title' => '</h3></div>',
+		) );
 	}
 }
 
