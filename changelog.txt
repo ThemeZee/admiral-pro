@@ -2,6 +2,12 @@
 Admiral Pro Changelog
 ===================================
 
+Version 1.0.6
+-----------------------------------
+* changed footer widget row to more flexible footer widget columns
+* fixed styling of footer menu and footer widgets
+* updated EDD Plugin Updater class
+
 Version 1.0.5
 -----------------------------------
 * changed Google Font URL to https in Customizer

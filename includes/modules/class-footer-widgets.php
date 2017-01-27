@@ -40,7 +40,7 @@ class Admiral_Pro_Footer_Widgets {
 	static function display_widgets() {
 
 		// Check if there are footer widgets.
-		if ( is_active_sidebar( 'footer-column-1' )
+		if ( is_active_sidebar( 'footer' )
 			or is_active_sidebar( 'footer-column-2' )
 			or is_active_sidebar( 'footer-column-3' )
 			or is_active_sidebar( 'footer-column-4' ) ) : ?>
@@ -51,10 +51,10 @@ class Admiral_Pro_Footer_Widgets {
 
 					<div id="footer-widgets" class="footer-widgets clearfix"  role="complementary">
 
-						<?php if ( is_active_sidebar( 'footer-column-1' ) ) : ?>
+						<?php if ( is_active_sidebar( 'footer' ) ) : ?>
 
 							<div class="footer-widget-column widget-area">
-								<?php dynamic_sidebar( 'footer-column-1' ); ?>
+								<?php dynamic_sidebar( 'footer' ); ?>
 							</div>
 
 						<?php endif; ?>
@@ -108,7 +108,7 @@ class Admiral_Pro_Footer_Widgets {
 		// Register Footer Column 1 widget area.
 		register_sidebar( array(
 			'name' => __( 'Footer Column 1', 'admiral-pro' ),
-			'id' => 'footer-column-1',
+			'id' => 'footer',
 			'description' => __( 'Appears on the first footer column.', 'admiral-pro' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix">',
 			'after_widget' => '</aside>',
