@@ -55,7 +55,7 @@ class Admiral_Pro_Custom_Colors {
 			$custom_css .= '
 				/* Header Color Setting */
 				.site-header {
-					background: '. $theme_options['header_color'] .';
+					background: ' . $theme_options['header_color'] . ';
 				}
 				';
 
@@ -68,7 +68,7 @@ class Admiral_Pro_Custom_Colors {
 				/* Navigation Color Setting */
 				.main-navigation-wrap,
 				.main-navigation-menu ul {
-					background: '. $theme_options['navi_color'] .';
+					background: ' . $theme_options['navi_color'] . ';
 				}
 				';
 
@@ -80,10 +80,10 @@ class Admiral_Pro_Custom_Colors {
 			$custom_css .= '
 				/* Header Line Color Setting */
 				.site-header {
-					border-bottom: 10px solid '. $theme_options['header_line_color'] .';
+					border-bottom: 10px solid ' . $theme_options['header_line_color'] . ';
 				}
 				.main-navigation-menu ul {
-					border-top: 10px solid '. $theme_options['header_line_color'] .';
+					border-top: 10px solid ' . $theme_options['header_line_color'] . ';
 				}
 				';
 
@@ -106,7 +106,7 @@ class Admiral_Pro_Custom_Colors {
 				.widget-title,
 				.widget-title a:link,
 				.widget-title a:visited {
-					color: '. $theme_options['content_primary_color'] .';
+					color: ' . $theme_options['content_primary_color'] . ';
 				}
 
 				.entry-title a:hover,
@@ -136,7 +136,7 @@ class Admiral_Pro_Custom_Colors {
 				.tzwb-tabbed-content .tzwb-tabnavi li a:link,
 				.tzwb-tabbed-content .tzwb-tabnavi li a:visited,
 				.tzwb-social-icons .social-icons-menu li a:hover {
-					background: '. $theme_options['content_primary_color'] .';
+					background: ' . $theme_options['content_primary_color'] . ';
 				}
 
 				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
@@ -159,7 +159,7 @@ class Admiral_Pro_Custom_Colors {
 				.entry-title a:active,
 				.widget-title a:hover,
 				.widget-title a:active {
-					color: '. $theme_options['content_secondary_color'] .';
+					color: ' . $theme_options['content_secondary_color'] . ';
 				}
 
 				a:hover,
@@ -184,7 +184,7 @@ class Admiral_Pro_Custom_Colors {
 				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
 				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab,
 				.tzwb-social-icons .social-icons-menu li a {
-					background: '. $theme_options['content_secondary_color'] .';
+					background: ' . $theme_options['content_secondary_color'] . ';
 				}
 				';
 
@@ -198,7 +198,7 @@ class Admiral_Pro_Custom_Colors {
 				a:hover,
 				a:focus,
 				a:active {
-					color: '. $theme_options['content_primary_color'] .';
+					color: ' . $theme_options['content_primary_color'] . ';
 				}
 				';
 
@@ -211,7 +211,7 @@ class Admiral_Pro_Custom_Colors {
 
 				/* Footer Widget Color Setting */
 				.footer-widgets-wrap {
-					background: '. $theme_options['footer_widgets_color'] .';
+					background: ' . $theme_options['footer_widgets_color'] . ';
 				}
 				';
 
@@ -224,7 +224,7 @@ class Admiral_Pro_Custom_Colors {
 
 				/* Footer Line Color Setting */
 				.footer-wrap {
-					background: '. $theme_options['footer_color'] .';
+					background: ' . $theme_options['footer_color'] . ';
 				}
 				';
 
