@@ -94,8 +94,6 @@ class Admiral_Pro_Magazine_Posts_Single_Widget extends WP_Widget {
 	/**
 	 * Renders the Widget Content
 	 *
-	 * Switches between horizontal and vertical layout style based on widget settings
-	 *
 	 * @uses this->magazine_posts_horizontal() or this->magazine_posts_vertical()
 	 * @used-by this->widget()
 	 *
@@ -108,8 +106,9 @@ class Admiral_Pro_Magazine_Posts_Single_Widget extends WP_Widget {
 
 		// Fetch posts from database.
 		$query_arguments = array(
-			'post__in'            => $post_id,
-			'no_found_rows'       => true,
+			'post__in'       => $post_id,
+			'posts_per_page' => 1,
+			'no_found_rows'  => true,
 		);
 		$posts_query = new WP_Query( $query_arguments );
 
