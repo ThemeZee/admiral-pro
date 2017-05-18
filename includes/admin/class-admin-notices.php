@@ -29,9 +29,6 @@ class Admiral_Pro_Admin_Notices {
 		// Add Missing Theme Notice.
 		add_action( 'admin_notices', array( __CLASS__, 'expired_license' ) );
 
-		// Add Missing Theme Notice.
-		add_action( 'admin_notices', array( __CLASS__, 'missing_theme' ) );
-
 		// Dismiss Notices.
 		add_action( 'init', array( __CLASS__, 'dismiss_notices' ) );
 
@@ -48,7 +45,7 @@ class Admiral_Pro_Admin_Notices {
 		// Get Settings.
 		$options = Admiral_Pro_Settings::instance();
 
-		if ( '' === $options->get( 'license_key' ) && in_array( $pagenow, array( 'index.php', 'update-core.php', 'plugins.php', 'themes.php' ) ) && ! isset( $_GET['page'] ) && current_theme_supports( 'admiral-pro' ) && ! get_transient( 'admiral_pro_activate_license_dismissed' ) && current_user_can( 'edit_theme_options' ) ) : ?>
+		if ( 'valid' !== $options->get( 'license_status' ) && 'expired' !== $options->get( 'license_status' ) && in_array( $pagenow, array( 'index.php', 'update-core.php', 'plugins.php', 'themes.php' ) ) && ! isset( $_GET['page'] ) && current_theme_supports( 'admiral-pro' ) && ! get_transient( 'admiral_pro_activate_license_dismissed' ) && current_user_can( 'edit_theme_options' ) ) : ?>
 
 			<div class="notice notice-info">
 				<p>
@@ -88,32 +85,6 @@ class Admiral_Pro_Admin_Notices {
 					?>
 					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'admiral_pro_action' => 'dismiss_notices', 'admiral_pro_notice' => 'expired_license' ) ), 'admiral_pro_dismiss_notice', 'admiral_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'admiral-pro' ); ?></a>
 				</p>
-			</div>
-
-		<?php
-		endif;
-
-	}
-
-	/**
-	 * Display missing theme notice
-	 *
-	 * @return void
-	 */
-	static function missing_theme() {
-		global $pagenow;
-
-		if ( ! current_theme_supports( 'admiral-pro' ) && in_array( $pagenow, array( 'index.php', 'update-core.php', 'plugins.php', 'themes.php' ) ) && ! isset( $_GET['page'] ) && ! get_transient( 'admiral_pro_missing_theme_dismissed' ) && current_user_can( 'edit_theme_options' ) ) : ?>
-
-			<div class="notice notice-warning">
-				<p>
-					<?php printf( __( 'The %1$s add-on needs the %2$s theme activated in order to work. You should deactivate %1$s if you have switched to another theme permanently.', 'admiral-pro' ),
-						ADMIRAL_PRO_NAME,
-						'Admiral'
-					); ?>
-					<a style="float: right" href="<?php echo wp_nonce_url( add_query_arg( array( 'admiral_pro_action' => 'dismiss_notices', 'admiral_pro_notice' => 'missing_theme' ) ), 'admiral_pro_dismiss_notice', 'admiral_pro_dismiss_notice_nonce' ); ?>"><?php _e( 'Dismiss Notice', 'admiral-pro' ); ?></a>
-				</p>
-
 			</div>
 
 		<?php
