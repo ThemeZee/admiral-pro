@@ -60,7 +60,7 @@ class Admiral_Pro_Customizer {
 		$default_options = array(
 			'logo_spacing'            => 0,
 			'header_spacing'          => 25,
-			'scroll_to_top'           => true,
+			'scroll_to_top'           => false,
 			'footer_text'             => '',
 			'credit_link'             => true,
 			'header_color'            => '#404040',

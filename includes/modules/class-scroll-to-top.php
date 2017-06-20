@@ -71,21 +71,19 @@ class Admiral_Pro_Scroll_To_Top {
 
 		// Add Scroll to Top setting.
 		$wp_customize->add_setting( 'admiral_theme_options[scroll_to_top]', array(
-			'default'           => true,
+			'default'           => false,
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
 			'sanitize_callback' => 'admiral_sanitize_checkbox',
-			)
-		);
+		) );
+
 		$wp_customize->add_control( 'admiral_theme_options[scroll_to_top]', array(
 			'label'    => __( 'Display Scroll to Top Button', 'admiral-pro' ),
 			'section'  => 'admiral_pro_section_footer',
 			'settings' => 'admiral_theme_options[scroll_to_top]',
 			'type'     => 'checkbox',
 			'priority' => 20,
-			)
-		);
-
+		) );
 	}
 }
 

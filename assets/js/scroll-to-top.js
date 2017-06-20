@@ -23,10 +23,10 @@
 
 			var window_top = $( window ).scrollTop();
 
-			if ( window_top < 150 ) {
-				scrollButton.fadeOut( 200 );
-			} else {
+			if ( window_top > 150 ) {
 				scrollButton.fadeIn( 200 );
+			} else {
+				scrollButton.fadeOut( 200 );
 			}
 		}
 
