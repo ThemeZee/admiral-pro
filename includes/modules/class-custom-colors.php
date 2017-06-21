@@ -135,7 +135,8 @@ class Admiral_Pro_Custom_Colors {
 				.infinite-scroll #infinite-handle span,
 				.tzwb-tabbed-content .tzwb-tabnavi li a:link,
 				.tzwb-tabbed-content .tzwb-tabnavi li a:visited,
-				.tzwb-social-icons .social-icons-menu li a:hover {
+				.tzwb-social-icons .social-icons-menu li a:hover,
+				.scroll-to-top-button:hover {
 					background: ' . $theme_options['content_primary_color'] . ';
 				}
 
@@ -183,7 +184,10 @@ class Admiral_Pro_Custom_Colors {
 				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
 				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
 				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab,
-				.tzwb-social-icons .social-icons-menu li a {
+				.tzwb-social-icons .social-icons-menu li a,
+				.scroll-to-top-button,
+				.scroll-to-top-button:focus,
+				.scroll-to-top-button:active {
 					background: ' . $theme_options['content_secondary_color'] . ';
 				}
 				';
