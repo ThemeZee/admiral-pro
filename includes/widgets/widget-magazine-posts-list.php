@@ -24,7 +24,7 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 			esc_html__( 'Magazine (List)', 'admiral-pro' ), // Name.
 			array(
 				'classname' => 'admiral-magazine-list-widget',
-				'description' => esc_html__( 'Displays your posts from a selected category in a simple list layout. Please use this widget ONLY in the Magazine Homepage widget area.', 'admiral-pro' ),
+				'description' => esc_html__( 'Displays your posts from a selected category in a simple list layout.', 'admiral-pro' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
@@ -36,7 +36,7 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 	private function default_settings() {
 
 		$defaults = array(
-			'title'    => '',
+			'title'    => esc_html__( 'Magazine (List)', 'admiral-pro' ),
 			'category' => 0,
 			'number'   => 3,
 		);
