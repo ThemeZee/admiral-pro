@@ -5,7 +5,7 @@ Plugin URI: http://themezee.com/addons/admiral-pro/
 Description: Adds additional features like custom colors, google fonts, widget areas and footer copyright to the Admiral theme.
 Author: ThemeZee
 Author URI: https://themezee.com/
-Version: 1.3
+Version: 1.3.1
 Text Domain: admiral-pro
 Domain Path: /languages/
 License: GPL v3
@@ -62,7 +62,7 @@ class Admiral_Pro {
 		define( 'ADMIRAL_PRO_NAME', 'Admiral Pro' );
 
 		// Define Version Number.
-		define( 'ADMIRAL_PRO_VERSION', '1.3' );
+		define( 'ADMIRAL_PRO_VERSION', '1.3.1' );
 
 		// Define Plugin Name.
 		define( 'ADMIRAL_PRO_PRODUCT_ID', 69758 );
@@ -225,7 +225,7 @@ class Admiral_Pro {
 
 		$options = Admiral_Pro_Settings::instance();
 
-		if ( $options->get( 'license_key' ) <> '' ) :
+		if ( '' !== $options->get( 'license_key' ) ) :
 
 			$license_key = trim( $options->get( 'license_key' ) );
 

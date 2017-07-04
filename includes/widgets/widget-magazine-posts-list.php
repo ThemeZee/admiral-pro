@@ -24,7 +24,7 @@ class Admiral_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 			esc_html__( 'Magazine (List)', 'admiral-pro' ), // Name.
 			array(
 				'classname' => 'admiral-magazine-list-widget',
-				'description' => esc_html__( 'Displays your posts from a selected category in a simple list layout.', 'admiral-pro' ),
+				'description' => esc_html__( 'Displays your posts from a selected category in a list layout.', 'admiral-pro' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
