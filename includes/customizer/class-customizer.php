@@ -74,7 +74,6 @@ class Admiral_Pro_Customizer {
 			'title_font'              => 'Montserrat',
 			'navi_font'               => 'Montserrat',
 			'widget_title_font'       => 'Montserrat',
-			'available_fonts'         => 'favorites',
 		);
 
 		return $default_options;
