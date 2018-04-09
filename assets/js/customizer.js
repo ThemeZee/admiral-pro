@@ -81,9 +81,13 @@
 			}
 			$( "head" ).append( googleFontSource );
 
+			// Set Font.
+			var systemFont = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+			var newFont = newval === 'SystemFontStack' ? systemFont : newval;
+
 			// Set CSS.
 			$( 'body, input, select, textarea' )
-				.css( 'font-family', newval );
+				.css( 'font-family', newFont );
 
 		} );
 	} );
@@ -102,9 +106,13 @@
 			}
 			$( "head" ).append( googleFontSource );
 
+			// Set Font.
+			var systemFont = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+			var newFont = newval === 'SystemFontStack' ? systemFont : newval;
+
 			// Set CSS.
 			$( '.site-title, .entry-title, .blog-title, .page-title, .sidebar-title, .archive-title' )
-				.css( 'font-family', newval );
+				.css( 'font-family', newFont );
 
 		} );
 	} );
@@ -123,9 +131,13 @@
 			}
 			$( "head" ).append( googleFontSource );
 
+			// Set Font.
+			var systemFont = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+			var newFont = newval === 'SystemFontStack' ? systemFont : newval;
+
 			// Set CSS.
 			$( '.main-navigation-menu a, .sidebar-navigation-menu a, button, input[type="button"], input[type="reset"], input[type="submit"], .infinite-scroll #infinite-handle span' )
-				.css( 'font-family', newval );
+				.css( 'font-family', newFont );
 
 		} );
 	} );
@@ -144,9 +156,13 @@
 			}
 			$( "head" ).append( googleFontSource );
 
+			// Set Font.
+			var systemFont = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+			var newFont = newval === 'SystemFontStack' ? systemFont : newval;
+
 			// Set CSS.
 			$( '.widget-title, .comments-header .comments-title, .comment-reply-title span' )
-				.css( 'font-family', newval );
+				.css( 'font-family', newFont );
 
 		} );
 	} );
