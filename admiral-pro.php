@@ -5,11 +5,11 @@ Plugin URI: http://themezee.com/addons/admiral-pro/
 Description: Adds additional features like custom colors, google fonts, widget areas and footer copyright to the Admiral theme.
 Author: ThemeZee
 Author URI: https://themezee.com/
-Version: 1.4
+Version: 1.5
 Text Domain: admiral-pro
 Domain Path: /languages/
-License: GPL v3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Admiral Pro
 Copyright(C) 2017, ThemeZee.com - support@themezee.com
@@ -17,7 +17,9 @@ Copyright(C) 2017, ThemeZee.com - support@themezee.com
 */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 
 /**
@@ -48,7 +50,6 @@ class Admiral_Pro {
 
 		// Setup Action Hooks.
 		self::setup_actions();
-
 	}
 
 	/**
@@ -62,7 +63,7 @@ class Admiral_Pro {
 		define( 'ADMIRAL_PRO_NAME', 'Admiral Pro' );
 
 		// Define Version Number.
-		define( 'ADMIRAL_PRO_VERSION', '1.4' );
+		define( 'ADMIRAL_PRO_VERSION', '1.5' );
 
 		// Define Plugin Name.
 		define( 'ADMIRAL_PRO_PRODUCT_ID', 69758 );
@@ -78,7 +79,6 @@ class Admiral_Pro {
 
 		// Plugin Root File.
 		define( 'ADMIRAL_PRO_PLUGIN_FILE', __FILE__ );
-
 	}
 
 	/**
@@ -123,7 +123,6 @@ class Admiral_Pro {
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-vertical-box.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-list.php';
 		require_once ADMIRAL_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-single.php';
-
 	}
 
 	/**
@@ -145,7 +144,6 @@ class Admiral_Pro {
 
 		// Add automatic plugin updater from ThemeZee Store API.
 		add_action( 'admin_init', array( __CLASS__, 'plugin_updater' ), 0 );
-
 	}
 
 	/**
@@ -196,7 +194,6 @@ class Admiral_Pro {
 		register_widget( 'Admiral_Pro_Magazine_Vertical_Box_Widget' );
 		register_widget( 'Admiral_Pro_Magazine_Posts_List_Widget' );
 		register_widget( 'Admiral_Pro_Magazine_Posts_Single_Widget' );
-
 	}
 
 	/**
@@ -231,16 +228,14 @@ class Admiral_Pro {
 
 			// Setup the updater.
 			$admiral_pro_updater = new Admiral_Pro_Plugin_Updater( ADMIRAL_PRO_STORE_API_URL, __FILE__, array(
-					'version' 	=> ADMIRAL_PRO_VERSION,
-					'license' 	=> $license_key,
-					'item_name' => ADMIRAL_PRO_NAME,
-					'item_id'   => ADMIRAL_PRO_PRODUCT_ID,
-					'author' 	=> 'ThemeZee',
-				)
-			);
+				'version'   => ADMIRAL_PRO_VERSION,
+				'license'   => $license_key,
+				'item_name' => ADMIRAL_PRO_NAME,
+				'item_id'   => ADMIRAL_PRO_PRODUCT_ID,
+				'author'    => 'ThemeZee',
+			) );
 
 		endif;
-
 	}
 }
 
