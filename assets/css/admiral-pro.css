@@ -587,10 +587,6 @@
 	.footer-widget-column:nth-child(3):nth-last-child(1) {
 		width: 100%;
 	}
-
-	.scroll-to-top-button {
-		display: none !important;
-	}
 }
 
 /*--------------------------------------------------------------
